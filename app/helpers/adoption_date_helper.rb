@@ -1,0 +1,2 @@
+module AdoptionDateHelper
+end

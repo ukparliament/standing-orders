@@ -1,0 +1,14 @@
+<%= content_tag( 'h1', @adoption_date.date ) %>
+<table>
+	<thead>
+		<tr>
+			<%= content_tag( 'td', 'ID') %>
+			<%= content_tag( 'td', 'Text' ) %>
+			<%= content_tag( 'td', 'Current number' ) %>
+			<%= content_tag( 'td', 'Root number' ) %>
+		</tr>
+	</thead>
+	<tbody>
+		<%= render :partial => 'adoption/adoption', :collection => @adoption_date.adoptions %>
+	</tbody>
+</table>
