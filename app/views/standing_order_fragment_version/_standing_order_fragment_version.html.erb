@@ -1,6 +1,7 @@
 <tr>
-	<%= content_tag( 'td', standing_order_fragment_version.id ) %>
+	<%= content_tag( 'td', standing_order_fragment_version.standing_order_number_in_list ) %>
+	<%= content_tag( 'td', standing_order_fragment_version.standing_order_letter_in_list ) %>
+	<%= content_tag( 'td', standing_order_fragment_version.fragment_number_in_list ) %>
 	<%= content_tag( 'td', standing_order_fragment_version.text ) %>
-	<%= content_tag( 'td', standing_order_fragment_version.current_number ) %>
 	<%= content_tag( 'td', standing_order_fragment_version.root_number ) %>
 </tr>
