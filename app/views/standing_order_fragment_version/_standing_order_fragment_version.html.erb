@@ -3,5 +3,6 @@
 	<%= content_tag( 'td', standing_order_fragment_version.standing_order_letter_in_list ) %>
 	<%= content_tag( 'td', standing_order_fragment_version.fragment_number_in_list ) %>
 	<%= content_tag( 'td', standing_order_fragment_version.text ) %>
-	<%= content_tag( 'td', standing_order_fragment_version.root_number ) %>
+	<%= content_tag( 'td', link_to( standing_order_fragment_version.root_number, standing_order_fragment_show_url( standing_order_fragment_version.standing_order_fragment ) ) ) %>
+	<%= content_tag( 'td', link_to( standing_order_fragment_version.adoption_date.date, adoption_date_show_url( standing_order_fragment_version.adoption_date ) ) ) %>
 </tr>
