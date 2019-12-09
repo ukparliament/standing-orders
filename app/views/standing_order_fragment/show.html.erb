@@ -1,15 +1,6 @@
 <%= content_tag( 'h1', @standing_order_fragment.id ) %>
 <table>
-	<thead>
-		<tr>
-			<%= content_tag( 'td', 'Number') %>
-			<%= content_tag( 'td', 'Letter' ) %>
-			<%= content_tag( 'td', 'Fragment number' ) %>
-			<%= content_tag( 'td', 'Text' ) %>
-			<%= content_tag( 'td', 'Root number' ) %>
-		</tr>
-	</thead>
 	<tbody>
-		<%= render :partial => 'standing_order_fragment_version/standing_order_fragment_version', :collection => @standing_order_fragment.standing_order_fragment_versions %>
+		<%= render :partial => 'standing_order_fragment_version/standing_order_fragment_version_from_fragment', :collection => @standing_order_fragment.standing_order_fragment_versions %>
 	</tbody>
 </table>
