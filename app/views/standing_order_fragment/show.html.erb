@@ -12,7 +12,7 @@
 	</tbody>
 </table>
 
-<%= content_tag( 'p', "View in context of #{link_to( 'latest adoption date', adoption_date_show_url( :adoption_date => @standing_order_fragment.standing_order_fragment_versions.last.adoption_date ) )}.".html_safe ) %>
+<%= content_tag( 'p', "View in context of #{link_to( 'latest adoption date', adoption_date_show_url( :adoption_date => @standing_order_fragment.standing_order_fragment_versions.last.adoption_date, :anchor => "fragment-#{@standing_order_fragment.id}" ) )}.".html_safe ) %>
 
 
 
