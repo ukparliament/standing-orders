@@ -1,0 +1,8 @@
+<tr>
+	<td>
+		<%= content_tag( 'nobr', link_to( standing_order_fragment_version_from_fragment.adoption_date.display_date, adoption_date_show_url( standing_order_fragment_version_from_fragment.adoption_date ) ) ) %>
+</td>
+	<%= content_tag( 'td', "#{standing_order_fragment_version_from_fragment.number_with_letter}." ) %>
+	<%= content_tag( 'td', "(#{standing_order_fragment_version_from_fragment.fragment_number_in_list})" ) %>
+	<%= content_tag( 'td', standing_order_fragment_version_from_fragment.text ) %>
+</tr>
