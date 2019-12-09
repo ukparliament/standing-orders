@@ -1,15 +1,6 @@
-<%= content_tag( 'h1', @adoption_date.date ) %>
+<%= content_tag( 'h1', @adoption_date.display_date ) %>
 <table>
-	<thead>
-		<tr>
-			<%= content_tag( 'td', 'Number') %>
-			<%= content_tag( 'td', 'Letter' ) %>
-			<%= content_tag( 'td', 'Fragment number' ) %>
-			<%= content_tag( 'td', 'Text' ) %>
-			<%= content_tag( 'td', 'Root number' ) %>
-		</tr>
-	</thead>
 	<tbody>
-		<%= render :partial => 'standing_order_fragment_version/standing_order_fragment_version', :collection => @adoption_date.standing_order_fragment_versions %>
+		<%= render :partial => 'standing_order_fragment_version/standing_order_fragment_version_from_adoption_date', :collection => @adoption_date.standing_order_fragment_versions %>
 	</tbody>
 </table>
