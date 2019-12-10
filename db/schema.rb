@@ -20,29 +20,29 @@ ActiveRecord::Schema.define(version: 0) do
     t.date "date", null: false
   end
 
-  create_table "adoptions", force: :cascade do |t|
-    t.integer "adoption_date_id",                             null: false
-    t.integer "standing_order_fragment_version_id",           null: false
-    t.string  "standing_order_number_in_list",      limit: 5, null: false
-    t.string  "fragment_number_in_list",            limit: 5, null: false
+  create_table "standing_order_fragment_version_texts", force: :cascade do |t|
+    t.string "text", limit: 2000, null: false
   end
 
   create_table "standing_order_fragment_versions", force: :cascade do |t|
-    t.string  "text",                       limit: 2000, null: false
-    t.date    "adopted_on",                              null: false
-    t.string  "current_number",             limit: 10,   null: false
-    t.integer "root_number",                             null: false
-    t.integer "reference",                               null: false
-    t.integer "year",                                    null: false
+    t.string  "text",                                    limit: 2000, null: false
+    t.date    "adopted_on",                                           null: false
+    t.string  "current_number",                          limit: 10,   null: false
+    t.string  "standing_order_number",                   limit: 5
+    t.integer "standing_order_number_in_list"
+    t.string  "standing_order_letter_in_list",           limit: 1
+    t.integer "fragment_number_in_list"
+    t.integer "root_number",                                          null: false
+    t.integer "reference",                                            null: false
+    t.integer "year",                                                 null: false
     t.integer "adoption_date_id"
     t.integer "standing_order_fragment_id"
+    t.integer "standing_order_fragment_version_text_id"
   end
 
   create_table "standing_order_fragments", force: :cascade do |t|
   end
 
-  add_foreign_key "adoptions", "adoption_dates", name: "fk_adoption_adoption_date"
-  add_foreign_key "adoptions", "standing_order_fragment_versions", name: "fk_standing_order_fragment_version"
   add_foreign_key "standing_order_fragment_versions", "adoption_dates", name: "fk_adoption_date"
   add_foreign_key "standing_order_fragment_versions", "standing_order_fragments", name: "fk_standing_order_fragment"
 end

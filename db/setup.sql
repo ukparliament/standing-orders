@@ -2,7 +2,13 @@
 drop table if exists standing_order_fragment_versions;
 drop table if exists standing_order_fragments;
 drop table if exists adoption_dates;
+drop table if exists standing_order_fragment_version_texts;
 
+create table standing_order_fragment_version_texts (
+	id serial,
+	text varchar(2000) not null,
+	primary key (id)
+);
 create table adoption_dates (
 	id int not null,
 	date date not null,
@@ -26,7 +32,9 @@ create table standing_order_fragment_versions (
 	year int not null,
 	adoption_date_id int,
 	standing_order_fragment_id int,
+	standing_order_fragment_version_text_id int,
 	constraint fk_adoption_date foreign key (adoption_date_id) references adoption_dates(id),
 	constraint fk_standing_order_fragment foreign key (standing_order_fragment_id) references standing_order_fragments(id),
+	constraint fk_standing_order_fragment_version_text foreign key (standing_order_fragment_version_text_id) references standing_order_fragment_version_texts(id),
 	primary key (id)
 );
