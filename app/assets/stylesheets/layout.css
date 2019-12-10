@@ -1,30 +1,8 @@
 body {
 	padding: 2em;
 }
-
-/* nav */
-.nav {
-	margin-left: 3em;
-}
-.nav li {
-	float: left;
-}
-.nav li a {
-	display: block;
-	margin-right: .2em;
-	padding: .5em;
-}
-
-/* main block */
-.main {
-	margin: 127px 3em 1em;
-	padding: 1em;
-}
 p, ol {
 	padding-bottom: 1em;
-}
-li p {
-	padding-bottom: .5em;
 }
 
 /* tables */
@@ -43,38 +21,4 @@ h1 {
 	border-width: 0 0 1px;
 	margin-bottom: 1em;
 	padding-bottom: .5em;
-}
-h2 {
-	border-width: 0 0 1px;
-	margin-bottom: 1em;
-	padding-bottom: .5em;
-}
-h3 {
-	padding-bottom: .5em;
-}
-
-/* view switcher */
-.view-switcher {
-	padding-bottom: 1em;
-}
-.view-switcher li {
-	float: left;
-	margin-right: 1em;
-}
-.view-switcher li a {
-	padding: .5em;
-}
-
-/* tag cloud */
-.tag-cloud {
-	text-align: center;
-}
-.tag-cloud li {
-	display: inline;
-	margin-right: 2em;
-}
-.tag-cloud a {
-	border-width: 1px;
-	line-height: 2.5em;
-	padding: .2em;
 }
