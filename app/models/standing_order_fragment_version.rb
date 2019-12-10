@@ -2,6 +2,7 @@ class StandingOrderFragmentVersion < ActiveRecord::Base
   
   belongs_to :adoption_date
   belongs_to :standing_order_fragment
+  belongs_to :standing_order_fragment_version_text
   
   def number_with_letter
     number_with_letter = self.standing_order_number_in_list.to_s
