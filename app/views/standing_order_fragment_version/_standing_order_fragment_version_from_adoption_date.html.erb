@@ -1,4 +1,4 @@
-<tr class="paragraph-<%= standing_order_fragment_version_from_adoption_date.fragment_number_in_list %>" id="fragment-<%= standing_order_fragment_version_from_adoption_date.standing_order_fragment.id %>">
+<tr class="paragraph-<%= standing_order_fragment_version_from_adoption_date.fragment_number_in_list %><% if @standing_order_fragment && @standing_order_fragment.standing_order_fragment_versions.last == standing_order_fragment_version_from_adoption_date %> highlight<% end -%>" id="fragment-<%= standing_order_fragment_version_from_adoption_date.standing_order_fragment.id %>">
 	<td>
 		<%= content_tag( 'span', "#{standing_order_fragment_version_from_adoption_date.number_with_letter}.", :class => standing_order_fragment_version_from_adoption_date.display_number_with_letter ) %>
 	</td>
