@@ -225,3 +225,7 @@ h2 {
 .date-cell {
 	white-space: nowrap;
 }
+
+.highlight {
+	background-color: red;
+}
