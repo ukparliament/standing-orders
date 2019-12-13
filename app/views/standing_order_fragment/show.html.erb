@@ -1,12 +1,16 @@
 <%= content_tag( 'h1', @standing_order_fragment.standing_order_fragment_versions.last.text ) %>
 
-<% if @standing_order_fragment.inforce? %>
-	<%= content_tag( 'p', 'This Standing Order fragment has been neither repealed nor has it expired.' ) %>
-<% else -%>
-	<%= content_tag( 'p', 'This Standing Order fragment has either been repealed or has expired.' ) %>
-<% end -%>
+<div id="in-force-status">
+	<% if @standing_order_fragment.inforce? %>
+		<%= content_tag( 'p', 'This Standing Order fragment has been neither repealed nor has it expired.', :class => 'in-force section' ) %>
+		<%= content_tag( 'h2', 'Standing Order in context of latest adoption.' ) %>
+	<% else -%>
+		<%= content_tag( 'p', 'This Standing Order fragment has either been repealed or has expired.', :class => 'out-of-force section' ) %>
+		<%= content_tag( 'h2', 'Standing Order in context of the final adoption of which it formed part.' ) %>
+	<% end -%>
+</div>
 
-<table>
+<table class="section">
 	<tbody>
 		<%= render :partial => 'standing_order_fragment_version/standing_order_fragment_version_from_adoption_date', :collection => @standing_order_fragment.standing_order_fragment_versions_in_context %>
 	</tbody>
@@ -14,17 +18,19 @@
 
 <%= content_tag( 'p', "View in context of #{link_to( 'latest adoption date', adoption_date_show_url( :adoption_date => @standing_order_fragment.standing_order_fragment_versions.last.adoption_date, :anchor => "fragment-#{@standing_order_fragment.id}" ) )}.".html_safe ) %>
 
-
-
-
-<hr />
-
-
-
-
-
+<%= content_tag( 'h2', 'Edit history' ) %>
 <table>
 	<tbody>
-		<%= render :partial => 'standing_order_fragment_version/standing_order_fragment_version_from_fragment', :collection => @standing_order_fragment.standing_order_fragment_versions %>
+		<tr>
+			<%= content_tag( 'td', link_to( @standing_order_fragment.first_version.adoption_date.display_date, adoption_date_show_url( :adoption_date => @standing_order_fragment.standing_order_fragment_versions.first.adoption_date, :anchor => "fragment-#{@standing_order_fragment.id}" ) ), :class => 'date-cell' ) %>
+			<%= content_tag( 'td', 'Adopted' ) %>
+			<%= content_tag( 'td', @standing_order_fragment.standing_order_fragment_versions.first.standing_order_fragment_version_text.text ) %>
+		</tr>
+		<%= render :partial => 'standing_order_fragment_version/standing_order_fragment_version_from_fragment', :collection => @standing_order_fragment.standing_order_fragment_versions_with_edits %>
+		<tr>
+			<%= content_tag( 'td', link_to( @standing_order_fragment.last_version.adoption_date.display_date, adoption_date_show_url( :adoption_date => @standing_order_fragment.standing_order_fragment_versions.last.adoption_date, :anchor => "fragment-#{@standing_order_fragment.id}" ) ), :class => 'date-cell' ) %>
+			<%= content_tag( 'td', 'Last appearance' ) %>
+			<%= content_tag( 'td', @standing_order_fragment.standing_order_fragment_versions.last.standing_order_fragment_version_text.text ) %>
+		</tr>
 	</tbody>
 </table>
