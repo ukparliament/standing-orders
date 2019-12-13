@@ -3,8 +3,11 @@
 task :setup => [
   :import_from_spreadsheet,
   :inflate_adoption_dates,
-  :inflate_adoptions,
-  :split_out_numbers_and_letters] do
+  :split_out_fragment_number,
+  :split_out_numbers_and_letters,
+  :inflate_standing_order_fragments,
+  :normalise_text_from_fragment_versions,
+  :check_for_edits] do
 end
 
 task :import_from_spreadsheet => :environment do
@@ -36,51 +39,71 @@ task :inflate_adoption_dates => :environment do
     standing_order_fragment_version.save
   end
 end
-task :inflate_adoptions => :environment do
-  puts "inflating adoptions"
+task :split_out_fragment_number => :environment do
+  puts "splitting out fragment number"
   standing_order_fragment_versions = StandingOrderFragmentVersion.all
   standing_order_fragment_versions.each do |standing_order_fragment_version|
-    adoption = Adoption.new
-    adoption.standing_order_fragment_version = standing_order_fragment_version
-    adoption.adoption_date = standing_order_fragment_version.adoption_date
-    adoption.standing_order_number = standing_order_fragment_version.current_number.split( '.', ).first
-    adoption.fragment_number_in_list = standing_order_fragment_version.current_number.split( '.', ).last
-    adoption.save
+    standing_order_fragment_version.standing_order_number = standing_order_fragment_version.current_number.split( '.', ).first
+    standing_order_fragment_version.fragment_number_in_list = standing_order_fragment_version.current_number.split( '.', ).last
+    standing_order_fragment_version.save
   end
 end
 task :split_out_numbers_and_letters => :environment do
   puts "splitting out so numbers and letters"
-  adoptions = Adoption.all
-  adoptions.each do |adoption|
-    if adoption.standing_order_number.match(/^(\d)+$/)
-      adoption.standing_order_number_in_list = adoption.standing_order_number.to_i
-      adoption.standing_order_letter_in_list = '-'
+  standing_order_fragment_versions = StandingOrderFragmentVersion.all
+  standing_order_fragment_versions.each do |standing_order_fragment_version|
+    if standing_order_fragment_version.standing_order_number.match(/^(\d)+$/)
+      standing_order_fragment_version.standing_order_number_in_list = standing_order_fragment_version.standing_order_number.to_i
+      standing_order_fragment_version.standing_order_letter_in_list = '-'
     else
-      adoption.standing_order_number_in_list = adoption.standing_order_number[0, adoption.standing_order_number.length - 1]
-      adoption.standing_order_letter_in_list = adoption.standing_order_number[adoption.standing_order_number.length - 1, 1]
+      standing_order_fragment_version.standing_order_number_in_list = standing_order_fragment_version.standing_order_number[0, standing_order_fragment_version.standing_order_number.length - 1]
+      standing_order_fragment_version.standing_order_letter_in_list = standing_order_fragment_version.standing_order_number[standing_order_fragment_version.standing_order_number.length - 1, 1]
     end
-    adoption.save
+    standing_order_fragment_version.save
   end
 end
-
-
-
-
-
-
-# inflate standing order versions into standing orders
-task :inflate_standing_orders => :environment do
-  puts "inflating standing orders from versions"
-  standing_order_versions = StandingOrderVersion.all
-  standing_order_versions.each do |standing_order_version|
-    standing_order = StandingOrder.find( standing_order.root_number )
-    unless standing_order
-      standing_order = StandingOrder.new
-      standing_order.id = standing_order_version.root_number
-      standing_order.save
+task :inflate_standing_order_fragments => :environment do
+  puts "inflating standing order fragments from standing order fragment versions"
+  standing_order_fragment_versions = StandingOrderFragmentVersion.all
+  standing_order_fragment_versions.each do |standing_order_fragment_version|
+    standing_order_fragment = StandingOrderFragment.all.where( id: standing_order_fragment_version.root_number ).first
+    unless standing_order_fragment
+      standing_order_fragment = StandingOrderFragment.new
+      standing_order_fragment.id = standing_order_fragment_version.root_number
+      standing_order_fragment.save
     end
-    standing_order_version.standing_order = standing_order
-    standing_order_version.save
+    standing_order_fragment_version.standing_order_fragment = standing_order_fragment
+    standing_order_fragment_version.save
+  end
+end
+task :normalise_text_from_fragment_versions => :environment do 
+  standing_order_fragments = StandingOrderFragment.all
+  standing_order_fragments.each do |standing_order_fragment|
+    standing_order_fragment.standing_order_fragment_versions.each do |standing_order_fragment_version|
+      standing_order_fragment_version_text = StandingOrderFragmentVersionText.all.where( text: standing_order_fragment_version.text.strip ).where( downcase_text: standing_order_fragment_version.text.strip.downcase ).first
+      unless standing_order_fragment_version_text
+        standing_order_fragment_version_text = StandingOrderFragmentVersionText.new
+        standing_order_fragment_version_text.text = standing_order_fragment_version.text.strip
+        standing_order_fragment_version_text.downcase_text = standing_order_fragment_version.text.strip.downcase
+        standing_order_fragment_version_text.save
+      end
+      standing_order_fragment_version.standing_order_fragment_version_text = standing_order_fragment_version_text
+      standing_order_fragment_version.save
+    end
+  end
+end
+task :check_for_edits => :environment do 
+  standing_order_fragments = StandingOrderFragment.all
+  standing_order_fragments.each do |standing_order_fragment|
+    standing_order_fragment.standing_order_fragment_versions.each do |standing_order_fragment_version|
+      if standing_order_fragment_version.preceding.size > 0
+        standing_order_fragment_version.is_edit = false
+        if standing_order_fragment_version.standing_order_fragment_version_text.downcase_text.strip != standing_order_fragment_version.preceding.last.standing_order_fragment_version_text.downcase_text.strip
+          standing_order_fragment_version.is_edit = true
+          standing_order_fragment_version.save
+        end
+      end
+    end
   end
 end
 
