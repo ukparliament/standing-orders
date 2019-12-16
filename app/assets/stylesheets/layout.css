@@ -1,6 +1,11 @@
 body {
 	padding: 1em;
 }
+
+nav {
+	padding-bottom: 1em;
+}
+
 p, ol {
 	padding-bottom: 1em;
 }
