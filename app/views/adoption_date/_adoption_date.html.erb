@@ -6,12 +6,11 @@
 			:adoption_date => adoption_date
 			),
 		{
-			rel: "prefetch",
-			as: "html",
-			title: adoption_date.to_yaml	
+			title: adoption_date.display_date + ": " + time_ago_in_words(adoption_date.date) + " ago"
 		}
 		),
 	class: "adoption_date"
+	
 	)
 %>
 
