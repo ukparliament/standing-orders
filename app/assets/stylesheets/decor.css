@@ -6,13 +6,13 @@ body * {
 /* main */
 .main {
 	background-color: #fff;
+	color: #666;
 }
 
 /* headings */
 h1 {
 	border-color: #aaa;
 	border-style: solid;
-	font-size: 1.2em;
 	font-weight: bold;
 }
 h2 {
@@ -33,7 +33,7 @@ h2 {
 
 /* pick out in force status */
 .in-force {
-	background-color: green;
+	background-color: lightgreen;
 }
 .out-of-force {
 	background-color: red;

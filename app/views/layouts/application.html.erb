@@ -2,15 +2,24 @@
 <html lang="en-gb">
 	<head>
   	  <title>Standing Orders</title>
-	  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+	  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
 	  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	  <%= csrf_meta_tags %>
 	</head>
 	<body>
-		<header></header>
+	
+		<header>
+			<nav>
+				<a href="/">House of Commons Public Standing Orders</a>
+			</nav>
+		</header>
+		
 		<main>
 			<%= yield %>
 		<main>
-		<footer></footer>
+		
+		<footer>
+		</footer>
+		
 	</body>
 </html>
