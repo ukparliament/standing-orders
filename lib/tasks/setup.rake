@@ -1,4 +1,4 @@
-# require 'CSV'
+require 'csv'
 
 task :setup => [
   :import_from_spreadsheet,
