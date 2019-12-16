@@ -8,6 +8,20 @@ nav {
 	padding-bottom: 1em;
 }
 
+main {
+	padding-top: 1em;
+	padding-bottom: 1em;
+	}
+
+footer {
+	padding-top: 1em;
+	border-top: thin solid gray;
+}
+
+ol#adoption_dates {
+	max-width: 10em;
+}
+
 p, ol {
 	padding-bottom: 1em;
 }

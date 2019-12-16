@@ -1,12 +1,8 @@
 <%= content_tag( 'h1', 'House of Commons Public Standing Orders' ) %>
 
-<%= content_tag( 'p', "An attempt to make a version of House of Commons Public Standing Orders which are citable over time. Based on data from #{link_to( 'the ParlRules project', 'https://parlrulesdata.org/')}.".html_safe ) %>
+<%= content_tag( 'p', "A prototype for a version of House of Commons Public Standing Orders citable over time, based on data from #{link_to( 'the ParlRules project', 'https://parlrulesdata.org/')}.".html_safe ) %>
 
-<%= content_tag( 'p', content_tag( 'cite', 'UK House of Commons Standing Orders Dataset, Version 1.0.0, ParlRulesData Project. 2019.' ) ) %>
-
-<%= content_tag( 'p', content_tag( 'cite', 'Goet, Niels D., Thomas G. Fleming, and Radoslaw Zubek. Forthcoming. ‘Procedural Change in the UK House of Commons, 1811-2015’. Legislative Studies Quarterly.' ) ) %>
-
-<ol>
+<ol id="adoption_dates">
 	<%= render :partial => 'adoption_date/adoption_date', :collection => @adoption_dates %>
 </ol>
 

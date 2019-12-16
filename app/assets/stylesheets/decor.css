@@ -3,13 +3,15 @@ body * {
 	line-height: 1.4em;
 }
 
-/* main */
 .main {
 	background-color: #fff;
 	color: #666;
 }
 
-/* headings */
+li.adoption_date { 
+	text-align: right;
+	}
+	
 h1 {
 	border-color: #aaa;
 	border-style: solid;
