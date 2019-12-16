@@ -1,5 +1,6 @@
 body * {
-	font-family: arial, helvetica, verdana, sans-serif;
+	font-family: system-ui, arial, helvetica, verdana, sans-serif;
+	line-height: 1.4em;
 }
 
 /* main */
