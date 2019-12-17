@@ -1,12 +1,13 @@
-body * {
+body {
 	font-family: system-ui, arial, helvetica, verdana, sans-serif;
 	line-height: 1.4em;
+	background-color: white;
+	color: #333;
 }
 
-.main {
-	background-color: #fff;
-	color: #666;
-}
+footer {
+	color: #999;
+	}
 
 li.adoption_date { 
 	text-align: right;
