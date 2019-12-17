@@ -24,13 +24,13 @@
 		<tr>
 			<%= content_tag( 'td', link_to( @standing_order_fragment.first_version.adoption_date.display_date, adoption_date_show_url( :adoption_date => @standing_order_fragment.standing_order_fragment_versions.first.adoption_date, :anchor => "fragment-#{@standing_order_fragment.id}" ) ), :class => 'date-cell' ) %>
 			<%= content_tag( 'td', 'Adopted' ) %>
-			<%= content_tag( 'td', @standing_order_fragment.standing_order_fragment_versions.first.standing_order_fragment_version_text.text ) %>
+			<%= content_tag( 'td', @standing_order_fragment.standing_order_fragment_versions.first.text ) %>
 		</tr>
 		<%= render :partial => 'standing_order_fragment_version/standing_order_fragment_version_from_fragment', :collection => @standing_order_fragment.standing_order_fragment_versions_with_edits %>
 		<tr>
 			<%= content_tag( 'td', link_to( @standing_order_fragment.last_version.adoption_date.display_date, adoption_date_show_url( :adoption_date => @standing_order_fragment.standing_order_fragment_versions.last.adoption_date, :anchor => "fragment-#{@standing_order_fragment.id}" ) ), :class => 'date-cell' ) %>
 			<%= content_tag( 'td', 'Last appearance' ) %>
-			<%= content_tag( 'td', @standing_order_fragment.standing_order_fragment_versions.last.standing_order_fragment_version_text.text ) %>
+			<%= content_tag( 'td', @standing_order_fragment.standing_order_fragment_versions.last.text ) %>
 		</tr>
 	</tbody>
 </table>
