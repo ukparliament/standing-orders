@@ -4,7 +4,7 @@
 	</td>
 	<%= content_tag( 'td', "(#{standing_order_fragment_version_from_adoption_date.fragment_number_in_list})" ) %>
 	
-	<%= content_tag( 'td', standing_order_fragment_version_from_adoption_date.standing_order_fragment_version_text.text ) %>
+	<%= content_tag( 'td', standing_order_fragment_version_from_adoption_date.text ) %>
 	
 	<%= content_tag( 'td', link_to( standing_order_fragment_version_from_adoption_date.root_number, standing_order_fragment_show_url( standing_order_fragment_version_from_adoption_date.standing_order_fragment ) ) ) %>
 </tr>

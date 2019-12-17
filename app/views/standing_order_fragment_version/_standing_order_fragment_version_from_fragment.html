@@ -1,5 +1,5 @@
 <tr>
 	<%= content_tag( 'td', link_to( standing_order_fragment_version_from_fragment.adoption_date.display_date, adoption_date_show_url( standing_order_fragment_version_from_fragment.adoption_date, :anchor => "fragment-#{standing_order_fragment_version_from_fragment.standing_order_fragment.id}" ) ), :class => 'date-cell' ) %>
 	<%= content_tag( 'td', 'Edit' ) %>
-	<%= content_tag( 'td', standing_order_fragment_version_from_fragment.standing_order_fragment_version_text.text ) %>
+	<%= content_tag( 'td', standing_order_fragment_version_from_fragment.text ) %>
 </tr>
