@@ -1,7 +1,11 @@
-<%= content_tag( 'h1', "As adopted " + @adoption_date.display_date ) %>
+<%= content_tag( 'h1', @adoption_date.display_date + ", as adopted" ) %>
 
 <table>
 	<tbody>
-		<%= render :partial => 'standing_order_fragment_version/standing_order_fragment_version_from_adoption_date', :collection => @adoption_date.standing_order_fragment_versions %>
+		<%= render( 
+			:partial => 'standing_order_fragment_version/standing_order_fragment_version_from_adoption_date', 
+			:collection => @adoption_date.standing_order_fragment_versions,
+			cached: true
+			) %>
 	</tbody>
 </table>
