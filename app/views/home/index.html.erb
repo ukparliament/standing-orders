@@ -2,14 +2,6 @@
 
 <%= content_tag( :p, "House of Commons Public Standing Orders citable over time, based on data from #{link_to( 'the ParlRules project', 'https://parlrulesdata.org/')}.".html_safe ) %>
 
-<ol id="adoption_dates">
-	<%= render(
-		:partial => 'adoption_date/adoption_date', 
-		:collection => @adoption_dates, 
-		cached: true
-		) %>
-</ol>
-
 <%= content_tag( :h2, 'Database schema' ) %>
 
 <img src="schema.png" id="schema">
