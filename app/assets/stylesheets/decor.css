@@ -14,9 +14,8 @@ li.adoption_date {
 	}
 	
 h1 {
-	border-color: #aaa;
-	border-style: solid;
 	font-weight: bold;
+	border-bottom: thin dotted gray;
 }
 
 img#schema {
@@ -24,9 +23,8 @@ img#schema {
 	}
 	
 h2 {
-	border-color: #ccc;
-	border-style: solid;
 	font-weight: bold;
+	border-bottom: thin dotted gray;
 }
 
 .date-cell {
