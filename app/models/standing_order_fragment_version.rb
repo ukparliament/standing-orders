@@ -15,9 +15,9 @@ class StandingOrderFragmentVersion < ActiveRecord::Base
   def display_number_with_letter
     display_number_in_list = ''
     if self.fragment_number_in_list == 1
-      display_number_in_list = 'display'
+      display_number_in_list = 'displayed'
     else
-      display_number_in_list = 'hide'
+      display_number_in_list = 'shadowed'
     end
     display_number_in_list
   end
