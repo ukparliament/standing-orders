@@ -1,4 +1,7 @@
 <%= content_tag( 'h1', 'Adoption dates' ) %>
-<ol>
-	<%= render :partial => 'adoption_date', :collection => @adoption_dates %>
+
+<ol id="adoption_dates">
+	<%= render 
+		:partial => 'adoption_date', 
+		:collection => @adoption_dates %>
 </ol>

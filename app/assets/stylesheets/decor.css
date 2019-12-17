@@ -1,42 +1,44 @@
-body * {
+body {
 	font-family: system-ui, arial, helvetica, verdana, sans-serif;
 	line-height: 1.4em;
+	background-color: white;
+	color: #333;
 }
 
-.main {
-	background-color: #fff;
-	color: #666;
-}
+footer {
+	color: #999;
+	}
 
 li.adoption_date { 
 	text-align: right;
 	}
 	
 h1 {
-	border-color: #aaa;
-	border-style: solid;
 	font-weight: bold;
-}
-h2 {
-	border-color: #ccc;
-	border-style: solid;
-	font-weight: bold;
+	border-bottom: thin dotted gray;
 }
 
-/* make a date in a table cell not wrap */
+img#schema {
+	width:100%;
+	}
+	
+h2 {
+	font-weight: bold;
+	border-bottom: thin dotted gray;
+}
+
 .date-cell {
 	white-space: nowrap;
 }
 
-/* pick out current fragment */
 .highlight {
 	background-color: orange;
 }
 
-/* pick out in force status */
 .in-force {
 	background-color: lightgreen;
 }
+
 .out-of-force {
 	background-color: red;
 }

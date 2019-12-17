@@ -6,7 +6,6 @@
 	  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
 	  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	  <link rel='dns-prefetch' href='//standing-orders.herokuapp.com'>
-	  <%# csrf_meta_tags %>
 	</head>
 	<body>
 	
@@ -22,9 +21,11 @@
 		
 		<footer>
 		
-		<%= content_tag( 'p', content_tag( 'cite', 'UK House of Commons Standing Orders Dataset, Version 1.0.0, ParlRulesData Project. 2019.' ) ) %>
+		<%= content_tag( :p, 
+			content_tag( :cite, "UK House of Commons Standing Orders Dataset, Version 1.0.0, ParlRulesData Project. 2019." ) ) %>
 
-<%= content_tag( 'p', content_tag( 'cite', 'Goet, Niels D., Thomas G. Fleming, and Radoslaw Zubek. Forthcoming. ‘Procedural Change in the UK House of Commons, 1811-2015’. Legislative Studies Quarterly.' ) ) %>
+		<%= content_tag( :p, 
+			content_tag( :cite, "Goet, Niels D., Thomas G. Fleming, and Radoslaw Zubek. Forthcoming. ‘Procedural Change in the UK House of Commons, 1811-2015’. Legislative Studies Quarterly." ) ) %>
 
 		</footer>
 		

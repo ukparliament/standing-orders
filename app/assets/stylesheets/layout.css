@@ -14,42 +14,38 @@ main {
 	}
 
 footer {
-	padding-top: 1em;
-	border-top: thin solid gray;
+	padding-top: 2em;
 }
 
 ol#adoption_dates {
-	max-width: 10em;
+	max-width: 12em;
 }
 
 p, ol {
 	padding-bottom: 1em;
 }
 
-/* tables */
 th, td {
 	padding: .2em .3em;
 }
 
-/* section */
 .section {
 	margin-bottom: 2em;
 	position: relative;
 }
 
-/* headings */
 h1 {
 	border-width: 0 0 1px;
 	margin-bottom: 1em;
 	padding-bottom: .5em;
 }
+
 h2 {
 	border-width: 0 0 1px;
 	margin-bottom: 1em;
 	padding-bottom: .5em;
 }
 
-/* in force block */
 #in-force-status p {
 	padding: 1em;
 }
