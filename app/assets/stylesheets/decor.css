@@ -27,6 +27,18 @@ h2 {
 	border-bottom: thin dotted gray;
 }
 
+.shadowed {
+	color: #ddd;
+	}
+
+.shadowed:hover {
+	color: #333;
+	}
+	
+.displayed {
+	font-weight: bold;
+	}
+	
 .date-cell {
 	white-space: nowrap;
 }

@@ -1,7 +1,7 @@
 class AdoptionDateController < ApplicationController
   
   def index
-    @adoption_dates = AdoptionDate.all.order( 'date desc' )
+    @adoption_dates = AdoptionDate.all.order( 'date asc' )
   end
   
   def show

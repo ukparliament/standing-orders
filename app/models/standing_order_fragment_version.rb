@@ -11,16 +11,19 @@ class StandingOrderFragmentVersion < ActiveRecord::Base
     end
     number_with_letter
   end
+  
   def display_number_with_letter
     display_number_in_list = ''
     if self.fragment_number_in_list == 1
-      display_number_in_list = 'display'
+      display_number_in_list = 'displayed'
     else
-      display_number_in_list = 'hide'
+      display_number_in_list = 'shadowed'
     end
     display_number_in_list
   end
+  
   def preceding
     StandingOrderFragmentVersion.all.where( standing_order_fragment_id: self.standing_order_fragment_id ).where( "adopted_on < ?", self.adopted_on ).order( 'adopted_on asc' )
   end
+  
 end
