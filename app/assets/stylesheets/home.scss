@@ -3,16 +3,13 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 body {
-  padding: 1em;
-  max-width: 44em;
+  padding: 1rem;
+  max-width: 44rem;
   margin: auto;
   font-family: system-ui, arial, helvetica, verdana, sans-serif;
-  line-height: 1.4em;
-  background-color: white;
-  color: #333;
 
   &.development {
-    border-top: 2pt solid crimson;
+    border-top: 0.5rem solid crimson;
   }
 }
 
@@ -21,58 +18,48 @@ nav {
 }
 
 main {
-  padding-top: 1em;
-  padding-bottom: 1em;
+  padding: 1rem auto;
 }
 
 footer {
-  padding-top: 2em;
-  color: #999;
+  padding-top: 2rem;
 }
 
 ol#adoption_dates {
-  max-width: 12em;
+  max-width: 12rem;
 }
 
 p, ol {
-  padding-bottom: 1em;
+  padding-bottom: 1rem;
 }
 
 th, td {
-  padding: .2em .3em;
+  padding: .2rem .3rem;
 }
 
 .section {
-  margin-bottom: 2em;
+  margin-bottom: 2rem;
   position: relative;
 }
 
-h1, h2 {
-  border-width: 0 0 1px;
-  margin-bottom: 1em;
-  padding-bottom: .5em;
+h1 {
+
+}
+
+h2 {
+
 }
 
 #in-force-status p {
-  padding: 1em;
+  padding: 1rem;
 }
 
 li.adoption_date {
   text-align: right;
 }
 
-h1 {
-  font-weight: bold;
-  border-bottom: thin dotted gray;
-}
-
 img#schema {
   width: 100%;
-}
-
-h2 {
-  font-weight: bold;
-  border-bottom: thin dotted gray;
 }
 
 .shadowed {
