@@ -1,4 +1,5 @@
-<%= content_tag( 'h1', @standing_order_fragment.standing_order_fragment_versions.last.text ) %>
+
+<% content_for :title, @standing_order_fragment.standing_order_fragment_versions.last.text %>
 
 <div id="in-force-status">
 	<% if @standing_order_fragment.inforce? %>

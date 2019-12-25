@@ -1,4 +1,5 @@
-<%= content_tag( 'h1', @adoption_date.display_date + ", as adopted" ) %>
+
+<% content_for :title, @adoption_date.display_date + ", as adopted" %>
 
 <table>
 	<tbody>

@@ -10,6 +10,7 @@
 	<body class="<%= Rails.env %>">
 	
 		<header>
+		
 			<nav>
 				<a href="/">House of Commons Public Standing Orders</a>
 				-
@@ -18,6 +19,9 @@
 				<a href="/standing-order-fragments">Fragments</a>
 				
 			</nav>
+			
+			<h1><%= yield(:title) %></h1>
+			
 		</header>
 		
 		<main>
@@ -31,8 +35,6 @@
 
 		<%= content_tag( :p, 
 			content_tag( :cite, "Goet, Niels D., Thomas G. Fleming, and Radoslaw Zubek. Forthcoming. ‘Procedural Change in the UK House of Commons, 1811-2015’. Legislative Studies Quarterly." ) ) %>
-
-		
 
 		</footer>
 		
