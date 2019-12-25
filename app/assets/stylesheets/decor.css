@@ -5,6 +5,10 @@ body {
 	color: #333;
 }
 
+body.development {
+	border-top: 2pt solid crimson;
+}
+
 footer {
 	color: #999;
 	}

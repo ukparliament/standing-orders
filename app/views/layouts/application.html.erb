@@ -7,7 +7,7 @@
 	  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	  <link rel='dns-prefetch' href='//standing-orders.herokuapp.com'>
 	</head>
-	<body>
+	<body class="<%= Rails.env %>">
 	
 		<header>
 			<nav>
@@ -31,6 +31,8 @@
 
 		<%= content_tag( :p, 
 			content_tag( :cite, "Goet, Niels D., Thomas G. Fleming, and Radoslaw Zubek. Forthcoming. ‘Procedural Change in the UK House of Commons, 1811-2015’. Legislative Studies Quarterly." ) ) %>
+
+		
 
 		</footer>
 		
