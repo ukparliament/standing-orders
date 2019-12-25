@@ -39,6 +39,14 @@ ol#adoption_dates {
   list-style-type: none;
 }
 
+ol#standing_order_fragments {
+  max-width: 12rem;
+  list-style-type: none;
+}
+
+article.standing-order-fragment {
+  padding: 0.5rem 0;
+}
 cite {
   font-style: normal;
 }
@@ -66,18 +74,6 @@ li.adoption_date {
 
 img#schema {
   width: 100%;
-}
-
-.shadowed {
-  color: #ddd;
-
-  &:hover {
-    font-weight: bold;
-  }
-
-  &:hover {
-    color: $color-primary-foreground;
-  }
 }
 
 .displayed {
