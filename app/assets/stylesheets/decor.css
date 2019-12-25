@@ -33,6 +33,7 @@ h2 {
 
 .shadowed:hover {
 	color: #333;
+	font-weight: bold;
 	}
 	
 .displayed {
