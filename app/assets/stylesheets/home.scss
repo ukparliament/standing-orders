@@ -1,3 +1,109 @@
 // Place all the styles related to the home controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+body {
+  padding: 1em;
+  max-width: 44em;
+  margin: auto;
+  font-family: system-ui, arial, helvetica, verdana, sans-serif;
+  line-height: 1.4em;
+  background-color: white;
+  color: #333;
+
+  &.development {
+    border-top: 2pt solid crimson;
+  }
+}
+
+nav {
+  padding-bottom: 1em;
+}
+
+main {
+  padding-top: 1em;
+  padding-bottom: 1em;
+}
+
+footer {
+  padding-top: 2em;
+  color: #999;
+}
+
+ol#adoption_dates {
+  max-width: 12em;
+}
+
+p, ol {
+  padding-bottom: 1em;
+}
+
+th, td {
+  padding: .2em .3em;
+}
+
+.section {
+  margin-bottom: 2em;
+  position: relative;
+}
+
+h1, h2 {
+  border-width: 0 0 1px;
+  margin-bottom: 1em;
+  padding-bottom: .5em;
+}
+
+#in-force-status p {
+  padding: 1em;
+}
+
+li.adoption_date {
+  text-align: right;
+}
+
+h1 {
+  font-weight: bold;
+  border-bottom: thin dotted gray;
+}
+
+img#schema {
+  width: 100%;
+}
+
+h2 {
+  font-weight: bold;
+  border-bottom: thin dotted gray;
+}
+
+.shadowed {
+  color: #ddd;
+
+  &:hover {
+    color: #333;
+    font-weight: bold;
+  }
+}
+
+.displayed {
+  font-weight: bold;
+}
+
+.date-cell {
+  white-space: nowrap;
+}
+
+.highlight {
+  background-color: orange;
+}
+
+.in-force {
+  background-color: lightgreen;
+}
+
+.out-of-force {
+  background-color: red;
+}
+
+.hide {
+  display: none;
+}
