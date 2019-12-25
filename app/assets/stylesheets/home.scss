@@ -7,6 +7,7 @@ body {
   max-width: 44rem;
   margin: auto;
   font-family: system-ui, arial, helvetica, verdana, sans-serif;
+  hanging-punctuation: first;
 
   &.development {
     border-top: 0.5rem solid crimson;
@@ -33,10 +34,6 @@ footer {
 ol#adoption_dates {
   max-width: 12rem;
   list-style-type: none;
-}
-
-p, ol {
-  padding-bottom: 1rem;
 }
 
 th, td {
