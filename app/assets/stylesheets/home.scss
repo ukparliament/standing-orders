@@ -3,15 +3,11 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 body {
-  padding: 1rem;
-  max-width: 44rem;
-  margin: auto;
   font-family: system-ui, arial, helvetica, verdana, sans-serif;
   hanging-punctuation: first;
-
-  &.development {
-    border-top: 0.5rem solid crimson;
-  }
+  margin: auto;
+  max-width: 44rem;
+  padding: 1rem;
 }
 
 nav {
@@ -23,8 +19,8 @@ header {
 }
 
 main {
-  padding: 1rem auto;
   line-height: 1.4rem;
+  padding: 1rem auto;
 }
 
 footer {
@@ -69,8 +65,11 @@ img#schema {
   color: #ddd;
 
   &:hover {
-    color: #333;
     font-weight: bold;
+  }
+
+  &:hover {
+    color: #333;
   }
 }
 
