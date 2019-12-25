@@ -2,12 +2,19 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+$font-stack:    system-ui, arial, helvetica, verdana, sans-serif;
+$color-primary-foreground: #333;
+$color-primary-background: #fff;
+$color-highlight: #FFA500;
+
 body {
-  font-family: system-ui, arial, helvetica, verdana, sans-serif;
+  font-family: $font-stack;
   hanging-punctuation: first;
   margin: auto;
   max-width: 44rem;
   padding: 1rem;
+  color: $color-primary-foreground;
+  background-color: $color-primary-background;
 }
 
 nav {
@@ -32,8 +39,8 @@ ol#adoption_dates {
   list-style-type: none;
 }
 
-th, td {
-  padding: .2rem .3rem;
+cite {
+  font-style: normal;
 }
 
 .section {
@@ -69,7 +76,7 @@ img#schema {
   }
 
   &:hover {
-    color: #333;
+    color: $color-primary-foreground;
   }
 }
 
@@ -82,7 +89,7 @@ img#schema {
 }
 
 .highlight {
-  background-color: orange;
+  background-color: $color-highlight;
 }
 
 .in-force {
