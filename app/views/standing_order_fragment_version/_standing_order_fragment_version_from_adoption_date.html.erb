@@ -1,24 +1,26 @@
-<article class="standing-order-fragment paragraph-<%= standing_order_fragment_version_from_adoption_date.fragment_number_in_list %>
+<p class="standing-order-fragment paragraph-<%= standing_order_fragment_version_from_adoption_date.fragment_number_in_list %>
 
 <% if @standing_order_fragment && @standing_order_fragment.standing_order_fragment_versions.last == standing_order_fragment_version_from_adoption_date %> highlight
   <% end -%>" id="fragment-<%= standing_order_fragment_version_from_adoption_date.standing_order_fragment.id %>">
 
-
-  <%= content_tag(
+  <%# content_tag(
           :span,
           standing_order_fragment_version_from_adoption_date.number_with_letter,
-          :class => standing_order_fragment_version_from_adoption_date.display_number_with_letter
+          :class => "standing-order-number " + standing_order_fragment_version_from_adoption_date.display_number_with_letter
       ) %>
-  &mdash;
 
-  <%= content_tag(
+  <%# content_tag(
           :span,
-          link_to(standing_order_fragment_version_from_adoption_date.fragment_number_in_list, standing_order_fragment_show_url(standing_order_fragment_version_from_adoption_date.standing_order_fragment))
+          link_to(standing_order_fragment_version_from_adoption_date.fragment_number_in_list.to_s, standing_order_fragment_show_url(standing_order_fragment_version_from_adoption_date.standing_order_fragment)),
+          :class => "link-to-fragment"
       )
   %>
 
-  &mdash;
+  <%= content_tag(:span, standing_order_fragment_version_from_adoption_date.text) %>
+  <%= content_tag(
+          :span,
+          link_to("[" + standing_order_fragment_version_from_adoption_date.current_number + "]", standing_order_fragment_show_url(standing_order_fragment_version_from_adoption_date.standing_order_fragment)),
+          :class => "link-to-fragment"
 
-  <%= content_tag(:q, standing_order_fragment_version_from_adoption_date.text) %>
-
-</article>
+          ) %>
+</p>
