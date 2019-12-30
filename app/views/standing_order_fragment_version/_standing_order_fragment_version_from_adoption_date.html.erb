@@ -27,11 +27,9 @@
 
   <%= content_tag(:span,
                   standing_order_fragment_version_from_adoption_date.text,
-                  :class => '') %>
-
-  <%= content_tag(
+                  :class => '') %><%= content_tag(
           :span,
-          link_to('&rarr; '.html_safe + standing_order_fragment_version_from_adoption_date.standing_order_fragment_id.to_s,
+          link_to('&rarr;&nbsp;'.html_safe + standing_order_fragment_version_from_adoption_date.standing_order_fragment_id.to_s,
                   standing_order_fragment_show_url(standing_order_fragment_version_from_adoption_date.standing_order_fragment),
                   :class => "link i gray"
           ),
