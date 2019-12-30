@@ -4,9 +4,10 @@
 		adoption_date.display_date, 
 		adoption_date_show_url( 
 			:adoption_date => adoption_date
-			)
+			),
+    class: "link underline-hover"
 		),
-	class: "adoption_date"
 	)
 %>
 
+<%# decade = date.strftime("%Y").to_i % 10 %>

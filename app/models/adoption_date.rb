@@ -3,6 +3,6 @@ class AdoptionDate < ActiveRecord::Base
 
   def display_date
     day_format = ActiveSupport::Inflector.ordinalize(date.day)
-    date.strftime("%Y &mdash; #{day_format} %B").html_safe
+    date.strftime("<span class='b'>%Y</span> &mdash; #{day_format} %B").html_safe
   end
 end
