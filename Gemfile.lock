@@ -50,6 +50,7 @@ GEM
     concurrent-ruby (1.1.5)
     crass (1.0.5)
     debug_inspector (0.0.3)
+    diffy (3.3.0)
     erubis (2.7.0)
     execjs (2.7.0)
     ffi (1.11.3)
@@ -152,6 +153,7 @@ PLATFORMS
 DEPENDENCIES
   byebug
   coffee-rails (~> 4.1.0)
+  diffy
   jbuilder (~> 2.0)
   jquery-rails
   pg (~> 0.18.4)
