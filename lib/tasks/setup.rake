@@ -7,7 +7,8 @@ task :setup => [
   :split_out_numbers_and_letters,
   :inflate_standing_order_fragments,
   :normalise_text_from_fragment_versions,
-  :check_for_edits] do
+  :check_for_edits,
+  :inflate_flows] do
 end
 
 task :import_from_spreadsheet => :environment do
@@ -16,11 +17,11 @@ task :import_from_spreadsheet => :environment do
     standing_order_fragment_version = StandingOrderFragmentVersion.new
     standing_order_fragment_version.id = row[0]
     standing_order_fragment_version.text = row[1]
-    standing_order_fragment_version.adopted_on = row[2].to_date
+    standing_order_fragment_version.adopted_on = row[6].to_date
     standing_order_fragment_version.current_number = row[3]
-    standing_order_fragment_version.root_number = row[4]
+    standing_order_fragment_version.root_number = row[2]
     standing_order_fragment_version.reference = row[5]
-    standing_order_fragment_version.year = row[6]
+    standing_order_fragment_version.year = row[4]
     standing_order_fragment_version.save
   end
 end
@@ -106,7 +107,39 @@ task :check_for_edits => :environment do
     end
   end
 end
-
+task :inflate_flows => :environment do
+  node = Node.where( :id => 200000 ).first
+  unless node
+    node = Node.new
+    node.id = 200000
+    node.label = 'Sink'
+    node.save
+  end
+  adoption_date = AdoptionDate.all.last
+  current_fragments = adoption_date.standing_order_fragment_versions
+  current_fragments.each do |current_fragment|
+    populate_flows( current_fragment )
+  end
+end
+def populate_flows( current_fragment )
+  node = Node.where( :id => current_fragment.id ).first
+  unless node
+    node = Node.new
+    node.id = current_fragment.id
+    node.label = current_fragment.flow_label
+    node.save
+  end
+  edge = Edge.new
+  edge.from_standing_order_fragment_version_id = current_fragment.id
+  if current_fragment.preceding.empty?
+    edge.to_standing_order_fragment_version_id = 200000
+  else
+    edge.to_standing_order_fragment_version_id = current_fragment.preceding.last.id
+    populate_flows( current_fragment.preceding.last )
+  end
+  edge.weight = current_fragment.text.length
+  edge.save
+end
 
 
 
