@@ -7,19 +7,34 @@
 	  <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel='dns-prefetch' href='//standing-orders.herokuapp.com'>
 	</head>
-	<body id="<%= Rails.env %>-environment" class="f5 ph3 sans-serif pv3 measure-wide near-black bg-white center">
+	<body id="<%= Rails.env %>-environment" class="sans-serif near-black bg-white center measure-wide pv4 ph2">
+	
+<header class="">
 
-		<header class="">
-
-				<a href="/" class="link underline-hover">House of Commons Public Standing Orders</a>
-				
-			</nav>
+			<a href="/" class="link underline-hover">House of Commons Public Standing Orders</a>
 			
 			<h1 class="lh-title f3"><%= yield(:title) %></h1>
 			
 		</header>
 		
 		<main class="lh-copy">
+		
+		
+<!-- 
+		<div class="flex justify-center">
+  <div class="outline w-5 pa3 mr1">
+    <code>1</code>
+  </div>
+  <div class="outline w-90 pa3 mr1">
+    <code>2</code>
+  </div>
+  <div class="outline w-5 pa3 mr1">
+    <code>3</code>
+  </div>
+</div>
+ -->
+
+
 			<%= yield %>
 		</main>
 		
