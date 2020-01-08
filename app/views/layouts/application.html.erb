@@ -7,17 +7,17 @@
 	  <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel='dns-prefetch' href='//standing-orders.herokuapp.com'>
 	</head>
-	<body id="<%= Rails.env %>-environment" class="sans-serif near-black bg-white center measure-wide pa3">
+	<body id="<%= Rails.env %>-environment" class="sans-serif near-black bg-white center ph3">
 	
 <header class="">
+			<h1 class="lh-title f3"><%= yield(:title) %></h1>
 
 			<nav><a href="/" class="link underline-hover">House of Commons Public Standing Orders</a></nav>
 			
-			<h1 class="lh-title f3"><%= yield(:title) %></h1>
 			
 		</header>
 		
-		<main class="lh-copy">
+		<main class="lh-copy measure-wide pv3">
 		
 		
 <!-- 
@@ -38,9 +38,9 @@
 			<%= yield %>
 		</main>
 		
-		<footer class="lh-copy">
+		<footer class="lh-copy measure-wide">
 		
-		<cite class="fs-normal-ns">
+		<cite class="fs-normal">
 		
 		<p>UK House of Commons Standing Orders Dataset, Version 1.1.0, ParlRulesData Project. 2019.</p>
 
