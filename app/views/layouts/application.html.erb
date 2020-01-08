@@ -7,11 +7,11 @@
 	  <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel='dns-prefetch' href='//standing-orders.herokuapp.com'>
 	</head>
-	<body id="<%= Rails.env %>-environment" class="sans-serif near-black bg-white center measure-wide pv4 ph2">
+	<body id="<%= Rails.env %>-environment" class="sans-serif near-black bg-white center measure-wide pa3">
 	
 <header class="">
 
-			<a href="/" class="link underline-hover">House of Commons Public Standing Orders</a>
+			<nav><a href="/" class="link underline-hover">House of Commons Public Standing Orders</a></nav>
 			
 			<h1 class="lh-title f3"><%= yield(:title) %></h1>
 			
@@ -40,9 +40,13 @@
 		
 		<footer class="lh-copy">
 		
-		<cite class="fs-normal-ns"><p>UK House of Commons Standing Orders Dataset, Version 1.1.0, ParlRulesData Project. 2019.</p>
+		<cite class="fs-normal-ns">
+		
+		<p>UK House of Commons Standing Orders Dataset, Version 1.1.0, ParlRulesData Project. 2019.</p>
 
 		<p>Goet, Niels D., Thomas G. Fleming, and Radoslaw Zubek. Forthcoming. ‘Procedural Change in the UK House of Commons, 1811-2015’. Legislative Studies Quarterly.</p>
+		
+		
 		</cite>
 
 		</footer>
