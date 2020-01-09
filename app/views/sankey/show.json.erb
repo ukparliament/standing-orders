@@ -1,0 +1,11 @@
+{
+"nodes":[
+<% @nodes.each do |node| -%>
+{"node":<%= node.id %>,"name":"<%= node.label %>"}<% unless node == @nodes.last -%>,<% end -%>
+<% end -%>
+],
+"links":[
+<% @edges.each do |edge| -%>
+{"source":<%= edge.from_node %>,"target":<%= edge.to_node %>,"value":2}<% unless edge == @edges.last -%>,<% end -%>
+<% end -%>
+]}

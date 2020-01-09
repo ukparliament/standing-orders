@@ -26,4 +26,11 @@ class StandingOrderFragmentVersion < ActiveRecord::Base
     StandingOrderFragmentVersion.all.where( standing_order_fragment_id: self.standing_order_fragment_id ).where( "adopted_on < ?", self.adopted_on ).order( 'adopted_on asc' )
   end
   
+  def flow_label
+    flow_label = self.adopted_on.strftime("%d-%m-%Y")
+    flow_label = flow_label + ' ' + self.standing_order_number_in_list.to_s
+    flow_label = flow_label + ' ' + self.standing_order_letter_in_list unless self.standing_order_letter_in_list == '-'
+    flow_label = flow_label + ' ' + self.fragment_number_in_list.to_s
+  end
+  
 end

@@ -9,5 +9,7 @@ Rails.application.routes.draw do
   get 'standing-order-fragments' => 'standing_order_fragment#index', as: :standing_order_fragment_list
   
   get 'standing-order-fragments/:standing_order_fragment' => 'standing_order_fragment#show', as: :standing_order_fragment_show
+  
+  get 'sankey' => 'sankey#show', as: :sankey_show
 
 end

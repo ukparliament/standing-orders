@@ -1,4 +1,6 @@
 /* main schema */
+drop table if exists edges;
+drop table if exists nodes;
 drop table if exists standing_order_fragment_versions;
 drop table if exists standing_order_fragments;
 drop table if exists adoption_dates;
@@ -38,5 +40,22 @@ create table standing_order_fragment_versions (
 	constraint fk_adoption_date foreign key (adoption_date_id) references adoption_dates(id),
 	constraint fk_standing_order_fragment foreign key (standing_order_fragment_id) references standing_order_fragments(id),
 	constraint fk_standing_order_fragment_version_text foreign key (standing_order_fragment_version_text_id) references standing_order_fragment_version_texts(id),
+	primary key (id)
+);
+
+create table nodes (
+	id int not null,
+	standing_order_fragment_version_id int,
+	label varchar(2000) not null,
+	primary key (id)
+);
+
+create table edges (
+	id serial,
+	from_standing_order_fragment_version_id int not null,
+	from_node int not null,
+	to_standing_order_fragment_version_id int,
+	to_node int not null,
+	weight int not null,
 	primary key (id)
 );
