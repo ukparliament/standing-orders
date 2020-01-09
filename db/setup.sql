@@ -45,6 +45,7 @@ create table standing_order_fragment_versions (
 
 create table nodes (
 	id int not null,
+	standing_order_fragment_version_id int,
 	label varchar(2000) not null,
 	primary key (id)
 );
@@ -52,7 +53,9 @@ create table nodes (
 create table edges (
 	id serial,
 	from_standing_order_fragment_version_id int not null,
+	from_node int not null,
 	to_standing_order_fragment_version_id int,
+	to_node int not null,
 	weight int not null,
 	primary key (id)
 );
