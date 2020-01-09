@@ -1,5 +1,5 @@
-<tr>
+<p>
 	<%= content_tag( 'span', link_to( standing_order_fragment_version_from_fragment.adoption_date.display_date, adoption_date_show_url( standing_order_fragment_version_from_fragment.adoption_date, :anchor => "fragment-#{standing_order_fragment_version_from_fragment.standing_order_fragment.id}" ) ), :class => 'date-cell' ) %>
-	<%= content_tag( 'b', 'Edit' ) %>
+	<%= content_tag( 'b', '(Edited)' ) %>
 	<%= content_tag( 'span', standing_order_fragment_version_from_fragment.text ) %>
-</tr>
+</p>

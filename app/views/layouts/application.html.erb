@@ -3,34 +3,51 @@
 	<head>
 		<meta charset="utf-8">
   	  <title>Standing Orders</title>
-	  <%# stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
+	  <%= stylesheet_link_tag 'application' %>
 	  <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://unpkg.com/tachyons/css/tachyons.min.css">
     <link rel='dns-prefetch' href='//standing-orders.herokuapp.com'>
 	</head>
-	<body id="<%= Rails.env %>-environment" class="f5 ph3 sans-serif pv3 measure-wide near-black bg-white center">
-
-		<header class="">
-
-				<a href="/" class="link underline-hover">House of Commons Public Standing Orders</a>
-				
-			</nav>
-			
+	<body id="<%= Rails.env %>-environment" class="sans-serif near-black bg-white center measure-wide pa3">
+	
+<header class="">
 			<h1 class="lh-title f3"><%= yield(:title) %></h1>
+
+			<nav><a href="/" class="link underline-hover">House of Commons Public Standing Orders</a></nav>
+			
 			
 		</header>
 		
-		<main class="lh-copy">
+		<main class="lh-copy measure-wide pv3">
+		
+		
+<!-- 
+		<div class="flex justify-center">
+  <div class="outline w-5 pa3 mr1">
+    <code>1</code>
+  </div>
+  <div class="outline w-90 pa3 mr1">
+    <code>2</code>
+  </div>
+  <div class="outline w-5 pa3 mr1">
+    <code>3</code>
+  </div>
+</div>
+ -->
+
+
 			<%= yield %>
 		</main>
 		
-		<footer class="lh-copy">
+		<footer class="lh-copy measure-wide">
 		
-		<%= content_tag( :p, 
-			content_tag( :cite, "UK House of Commons Standing Orders Dataset, Version 1.1.0, ParlRulesData Project. 2019." ) ) %>
+		<cite class="fs-normal">
+		
+		<p>UK House of Commons Standing Orders Dataset, Version 1.1.0, ParlRulesData Project. 2019.</p>
 
-		<%= content_tag( :p, 
-			content_tag( :cite, "Goet, Niels D., Thomas G. Fleming, and Radoslaw Zubek. Forthcoming. ‘Procedural Change in the UK House of Commons, 1811-2015’. Legislative Studies Quarterly." ) ) %>
+		<p>Goet, Niels D., Thomas G. Fleming, and Radoslaw Zubek. Forthcoming. ‘Procedural Change in the UK House of Commons, 1811-2015’. Legislative Studies Quarterly.</p>
+		
+		
+		</cite>
 
 		</footer>
 
