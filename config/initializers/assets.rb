@@ -10,3 +10,6 @@ Rails.application.config.assets.version = '1.0'
 # application.js, application.css, and all non-JS/CSS in app/assets folder are already added.
 # Rails.application.config.assets.precompile += %w( search.js )
 Rails.application.config.assets.precompile += %w( sankey.css )
+Rails.application.config.assets.precompile += %w( d3.v4.min.js )
+Rails.application.config.assets.precompile += %w( sankey.js )
+Rails.application.config.assets.precompile += %w( sankey-setup.js )
