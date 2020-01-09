@@ -6,8 +6,8 @@ class SankeyController < ApplicationController
         render "show", :layout => 'sankey'
       }
       format.json {
-        @nodes = Node.all
-        @edges = Edge.all
+        @nodes = Node.all.order( id: :asc )
+        @edges = Edge.all.order( from_node: :asc )
       }
     end
   end
