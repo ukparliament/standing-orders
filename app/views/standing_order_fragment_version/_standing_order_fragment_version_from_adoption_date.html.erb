@@ -1,33 +1,20 @@
 <div id="so-<%= standing_order_fragment_version_from_adoption_date.number_with_letter.downcase %>">
 	<p class="standing-order-fragment paragraph-<%= standing_order_fragment_version_from_adoption_date.fragment_number_in_list %>
-
-	<% if @standing_order_fragment && @standing_order_fragment.standing_order_fragment_versions.last == standing_order_fragment_version_from_adoption_date %> highlight
+	<% if @standing_order_fragment && @standing_order_fragment.standing_order_fragment_versions.last == standing_order_fragment_version_from_adoption_date %>outline pa2
 	  <% end -%>" id="fragment-<%= standing_order_fragment_version_from_adoption_date.standing_order_fragment.id %>">
 
 	  <% if standing_order_fragment_version_from_adoption_date.fragment_number_in_list == 1 %>
-	    <%= content_tag(:span,
-	                    standing_order_fragment_version_from_adoption_date.standing_order_number + '.',
-	                    :class => "b"
-	        ) %>&mdash;
+	    <span class="b"><%= standing_order_fragment_version_from_adoption_date.standing_order_number + '.' %></span>&mdash;
 	    <% end  %>
 
+	  <%= standing_order_fragment_version_from_adoption_date.text %>
 
-
-	  <%= content_tag(:span,
-	                  standing_order_fragment_version_from_adoption_date.text,
-	                  :class => '') %><%= content_tag(
+	  <%= content_tag(
 	          :span,
-	          link_to('&rarr;&nbsp;'.html_safe + standing_order_fragment_version_from_adoption_date.standing_order_fragment_id.to_s,
+	          link_to('&nbsp;['.html_safe + standing_order_fragment_version_from_adoption_date.standing_order_fragment_id.to_s+ ']',
 	                  standing_order_fragment_show_url(standing_order_fragment_version_from_adoption_date.standing_order_fragment),
-	                  :class => "link i gray"
-	          ),
-
+	                  :class => "link gray"
+	          )
 	          ) %>
-
-	  <%# content_tag(:code,
-	                  standing_order_fragment_version_from_adoption_date.attributes) %>
-
-
-
-	</p>
+</p>
 </div>
