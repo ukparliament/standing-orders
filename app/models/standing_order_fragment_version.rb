@@ -22,6 +22,16 @@ class StandingOrderFragmentVersion < ActiveRecord::Base
     display_number_in_list
   end
   
+  def fragment_id
+    fragment_id = ''
+    fragment_id = self.standing_order_number_in_list.to_s
+    unless self.standing_order_letter_in_list == '-' and self.fragment_number_in_list == 1
+      fragment_id = fragment_id + self.standing_order_letter_in_list if self.standing_order_letter_in_list
+      fragment_id = fragment_id + self.fragment_number_in_list.to_s unless self.fragment_number_in_list == 1
+    end
+    fragment_id.downcase
+  end
+  
   def preceding
     StandingOrderFragmentVersion.all.where( standing_order_fragment_id: self.standing_order_fragment_id ).where( "adopted_on < ?", self.adopted_on ).order( 'adopted_on asc' )
   end
