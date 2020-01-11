@@ -1,47 +1,49 @@
-<p class="standing-order-fragment paragraph-<%= standing_order_fragment_version_from_adoption_date.fragment_number_in_list %>
+<div id="so-<%= standing_order_fragment_version_from_adoption_date.number_with_letter.downcase %>">
+	<p class="standing-order-fragment paragraph-<%= standing_order_fragment_version_from_adoption_date.fragment_number_in_list %>
 
-<% if @standing_order_fragment && @standing_order_fragment.standing_order_fragment_versions.last == standing_order_fragment_version_from_adoption_date %> highlight
-  <% end -%>" id="fragment-<%= standing_order_fragment_version_from_adoption_date.standing_order_fragment.id %>">
+	<% if @standing_order_fragment && @standing_order_fragment.standing_order_fragment_versions.last == standing_order_fragment_version_from_adoption_date %> highlight
+	  <% end -%>" id="fragment-<%= standing_order_fragment_version_from_adoption_date.standing_order_fragment.id %>">
 
-  <%# content_tag(
-          :span,
-          standing_order_fragment_version_from_adoption_date.number_with_letter,
-          :class => "standing-order-number " + standing_order_fragment_version_from_adoption_date.display_number_with_letter
-      ) %>
+	  <%# content_tag(
+	          :span,
+	          standing_order_fragment_version_from_adoption_date.number_with_letter,
+	          :class => "standing-order-number " + standing_order_fragment_version_from_adoption_date.display_number_with_letter
+	      ) %>
 
-  <%# content_tag(
-          :span,
-          link_to(standing_order_fragment_version_from_adoption_date.fragment_number_in_list.to_s, standing_order_fragment_show_url(standing_order_fragment_version_from_adoption_date.standing_order_fragment)),
-          :class => "link-to-fragment"
-      )
-  %>
-
-
-  <!-- TODO standing_order_fragment_version_from_adoption_date.number_with_letter -->
-
-  <% if standing_order_fragment_version_from_adoption_date.fragment_number_in_list == 1 %>
-    <%= content_tag(:span,
-                    standing_order_fragment_version_from_adoption_date.standing_order_number + '.',
-                    :class => "b"
-        ) %>&mdash;
-    <% end  %>
+	  <%# content_tag(
+	          :span,
+	          link_to(standing_order_fragment_version_from_adoption_date.fragment_number_in_list.to_s, standing_order_fragment_show_url(standing_order_fragment_version_from_adoption_date.standing_order_fragment)),
+	          :class => "link-to-fragment"
+	      )
+	  %>
 
 
+	  <!-- TODO standing_order_fragment_version_from_adoption_date.number_with_letter -->
 
-  <%= content_tag(:span,
-                  standing_order_fragment_version_from_adoption_date.text,
-                  :class => '') %><%= content_tag(
-          :span,
-          link_to('&rarr;&nbsp;'.html_safe + standing_order_fragment_version_from_adoption_date.standing_order_fragment_id.to_s,
-                  standing_order_fragment_show_url(standing_order_fragment_version_from_adoption_date.standing_order_fragment),
-                  :class => "link i gray"
-          ),
-
-          ) %>
-
-  <%# content_tag(:code,
-                  standing_order_fragment_version_from_adoption_date.attributes) %>
+	  <% if standing_order_fragment_version_from_adoption_date.fragment_number_in_list == 1 %>
+	    <%= content_tag(:span,
+	                    standing_order_fragment_version_from_adoption_date.standing_order_number + '.',
+	                    :class => "b"
+	        ) %>&mdash;
+	    <% end  %>
 
 
 
-</p>
+	  <%= content_tag(:span,
+	                  standing_order_fragment_version_from_adoption_date.text,
+	                  :class => '') %><%= content_tag(
+	          :span,
+	          link_to('&rarr;&nbsp;'.html_safe + standing_order_fragment_version_from_adoption_date.standing_order_fragment_id.to_s,
+	                  standing_order_fragment_show_url(standing_order_fragment_version_from_adoption_date.standing_order_fragment),
+	                  :class => "link i gray"
+	          ),
+
+	          ) %>
+
+	  <%# content_tag(:code,
+	                  standing_order_fragment_version_from_adoption_date.attributes) %>
+
+
+
+	</p>
+</div>
