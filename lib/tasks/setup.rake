@@ -77,7 +77,8 @@ task :inflate_standing_order_fragments => :environment do
     standing_order_fragment_version.save
   end
 end
-task :normalise_text_from_fragment_versions => :environment do 
+task :normalise_text_from_fragment_versions => :environment do
+  puts "normalising text from standing order fragment versions"
   standing_order_fragments = StandingOrderFragment.all
   standing_order_fragments.each do |standing_order_fragment|
     standing_order_fragment.standing_order_fragment_versions.each do |standing_order_fragment_version|
@@ -94,6 +95,7 @@ task :normalise_text_from_fragment_versions => :environment do
   end
 end
 task :check_for_edits => :environment do 
+  puts "checking text for edits"
   standing_order_fragments = StandingOrderFragment.all
   standing_order_fragments.each do |standing_order_fragment|
     standing_order_fragment.standing_order_fragment_versions.each do |standing_order_fragment_version|
@@ -108,6 +110,7 @@ task :check_for_edits => :environment do
   end
 end
 task :inflate_flows => :environment do
+  puts "inflating flows - nodes and edges"
   @node_id = 0
   node = Node.where( :id => @node_id ).first
   unless node
