@@ -4,10 +4,10 @@
 <div id="in-force-status">
 	<% if @standing_order_fragment.inforce? %>
 		<%= content_tag( 'p', 'This Standing Order fragment has been neither repealed nor has it expired.', :class => 'in-force section' ) %>
-		<%= content_tag( 'h2', 'Standing Order in context of latest adoption.' ) %>
+		<%= content_tag( 'h2', 'Standing Order in the context of the most adoption' ) %>
 	<% else -%>
 		<%= content_tag( 'p', 'This Standing Order fragment has either been repealed or has expired.', :class => 'out-of-force section' ) %>
-		<%= content_tag( 'h2', 'Standing Order in context of the final adoption of which it formed part.' ) %>
+		<%= content_tag( 'h2', 'Standing Order in the context of the most  adoption of which it formed part' ) %>
 	<% end -%>
 </div>
 
