@@ -3,21 +3,27 @@
 
 <div id="in-force-status">
 	<% if @standing_order_fragment.inforce? %>
-		<%= content_tag( 'p', 'This Standing Order fragment has been neither repealed nor has it expired.', :class => 'in-force section' ) %>
-		<%= content_tag( 'h2', 'Standing Order in the context of the most recent adoption' ) %>
+	
+		<p class='in-force section'>This Standing Order fragment has been neither repealed nor has it expired.</p>
+		
+		<h2>Standing Order in the context of the most recent adoption</h2>
+		
 	<% else -%>
-		<%= content_tag( 'p', 'This Standing Order fragment has either been repealed or has expired.', :class => 'out-of-force section' ) %>
-		<%= content_tag( 'h2', 'Standing Order in the context of the most  recent adoption of which it formed part' ) %>
+	
+		<p class='out-of-force section'>This Standing Order fragment has either been repealed or has expired.</p>
+		
+		<h2>Standing Order in the context of the most recent adoption of which it formed part</h2>
+		
 	<% end -%>
 </div>
 
 <table class="section">
+
 	<tbody>
 		<%= render :partial => 'standing_order_fragment_version/standing_order_fragment_version_from_adoption_date', :collection => @standing_order_fragment.standing_order_fragment_versions_in_context %>
 	</tbody>
+	
 </table>
-
-<%= content_tag( 'p', "View in context of #{link_to( 'latest adoption date', adoption_date_show_url( :adoption_date => @standing_order_fragment.standing_order_fragment_versions.last.adoption_date, :anchor => "fragment-#{@standing_order_fragment.id}" ) )}.".html_safe ) %>
 
 <%= content_tag( 'h2', 'Appearance history' ) %>
 
