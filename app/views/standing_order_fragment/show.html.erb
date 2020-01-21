@@ -25,11 +25,12 @@
 	
 </table>
 
-<%= content_tag( 'h2', 'Appearance history' ) %>
+<h2>Appearance history</h2>
 
 <p>
 			<%= content_tag( 'span', link_to( @standing_order_fragment.first_version.adoption_date.display_date, adoption_date_show_url( :adoption_date => @standing_order_fragment.standing_order_fragment_versions.first.adoption_date, :anchor => "fragment-#{@standing_order_fragment.id}" ) ), :class => 'date-cell' ) %>
-			<%= content_tag( 'b', '(Adopted)' ) %>
+			<strong>(Adopted)</strong>
+			
 			<%= content_tag( 'span', @standing_order_fragment.standing_order_fragment_versions.first.text ) %>
 </p>
 
@@ -39,6 +40,7 @@
 
 <p>
 			<%= content_tag( 'span', link_to( @standing_order_fragment.last_version.adoption_date.display_date, adoption_date_show_url( :adoption_date => @standing_order_fragment.standing_order_fragment_versions.last.adoption_date, :anchor => "fragment-#{@standing_order_fragment.id}" ) ), :class => 'date-cell' ) %>
-			<%= content_tag( 'b', '(Last appeared)' ) %>
+			<strong>(Last appeared)</strong>
+			
 			<%= content_tag( 'span', @standing_order_fragment.standing_order_fragment_versions.last.text ) %>
 </p>
