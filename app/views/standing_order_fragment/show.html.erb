@@ -1,21 +1,22 @@
 
 <% content_for :title, @standing_order_fragment.standing_order_fragment_versions.last.text %>
 
-<div id="in-force-status">
 	<% if @standing_order_fragment.inforce? %>
-	
-		<p class='in-force section'>This Standing Order fragment has been neither repealed nor has it expired.</p>
-		
-		<h2 class='lh-title'>Standing Order in the context of the most recent adoption</h2>
+	<ul>
+		<li>This Standing Order fragment <strong>has not been repealed</strong>.</li>
+		<li>This Standing Order fragment <strong>has not expired</strong>.</li>
+	</ul>
+		<h2 class='lh-title'>Standing Order fragment, within the Standing Order in the context of the most recent adoption</h2>
 		
 	<% else -%>
-	
-		<p class='out-of-force section'>This Standing Order fragment has either been repealed or has expired.</p>
+	<ul>
+		<li>This Standing Order fragment <strong>has either been repealed</strong> ... </li>
+		<li>... or this Standing Order fragment <strong>has expired</strong>.</li>
+	</ul>
 		
-		<h2>Standing Order in the context of the most recent adoption of which it formed part</h2>
+		<h2>Standing Order fragment, within the Standing Order in the context of the most recent adoption of which it formed part</h2>
 		
 	<% end -%>
-</div>
 
 <table class="section">
 
