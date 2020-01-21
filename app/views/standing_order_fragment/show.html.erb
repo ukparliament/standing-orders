@@ -6,7 +6,7 @@
 	
 		<p class='in-force section'>This Standing Order fragment has been neither repealed nor has it expired.</p>
 		
-		<h2>Standing Order in the context of the most recent adoption</h2>
+		<h2 class='lh-title'>Standing Order in the context of the most recent adoption</h2>
 		
 	<% else -%>
 	
@@ -25,7 +25,7 @@
 	
 </table>
 
-<h2>Appearance history</h2>
+<h2 class='lh-title'>Appearance history</h2>
 
 <p>
 			<%= content_tag( 'span', link_to( @standing_order_fragment.first_version.adoption_date.display_date, adoption_date_show_url( :adoption_date => @standing_order_fragment.standing_order_fragment_versions.first.adoption_date, :anchor => "fragment-#{@standing_order_fragment.id}" ) ), :class => 'date-cell' ) %>
