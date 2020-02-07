@@ -1,22 +1,27 @@
-<div id='so-<%= standing_order_fragment_version_from_adoption_date.fragment_id %>'>
+<% soffad = standing_order_fragment_version_from_adoption_date %>
 
-	<p class="standing-order-fragment paragraph-<%= standing_order_fragment_version_from_adoption_date.fragment_number_in_list %>
+
+<div id='so-<%= soffad.fragment_id %>'>
+
+	<p class="standing-order-fragment paragraph-<%= soffad.fragment_number_in_list %>
 	
-	<% if @standing_order_fragment && @standing_order_fragment.standing_order_fragment_versions.last == standing_order_fragment_version_from_adoption_date %>outline pa2
-	  <% end -%>" id="fragment-<%= standing_order_fragment_version_from_adoption_date.standing_order_fragment.id %>">
+	<% if @standing_order_fragment && @standing_order_fragment.standing_order_fragment_versions.last == soffad %>outline pa2
+	  <% end -%>" id="fragment-<%= soffad.standing_order_fragment.id %>">
 
-	  <% if standing_order_fragment_version_from_adoption_date.fragment_number_in_list == 1 %>
+<% if params.key?("debug") %>
+<code><%= soffad.attributes.except("text") %></code><br>
+<% end %>
+
+	  <% if soffad.fragment_number_in_list == 1 %>
 	  
-	    <strong><%= standing_order_fragment_version_from_adoption_date.standing_order_number + '.' %></strong>
+	    <strong><%= soffad.standing_order_number + '.' %></strong>
 	    <% end  %>
 
-	  <%= standing_order_fragment_version_from_adoption_date.text %>
+<%= soffad.text %>
 
-	  <span><%= link_to(' &sect;'.html_safe + standing_order_fragment_version_from_adoption_date.standing_order_fragment_id.to_s,
-	                  standing_order_fragment_show_url(standing_order_fragment_version_from_adoption_date.standing_order_fragment),
-	                  :class => "link"
-	          )
-	           %></span>
-          
+	  <span class="gray pl1">&sect;<%= link_to(soffad.standing_order_fragment_id.to_s,
+	                  standing_order_fragment_show_url(soffad.standing_order_fragment),
+	                  :class => "gray link"
+	          ) %></span> 
 	</p>        
 </div>
