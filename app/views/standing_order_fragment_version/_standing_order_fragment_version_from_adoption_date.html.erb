@@ -17,11 +17,13 @@
 	    <strong><%= soffad.standing_order_number + '.' %></strong>
 	    <% end  %>
 
-<%= soffad.text %>
 
-	  <span class="gray pl1">&sect;<%= link_to(soffad.standing_order_fragment_id.to_s,
+
+	  <span class="gray pl1">
+	  <%= link_to('&sect;'.html_safe,
 	                  standing_order_fragment_show_url(soffad.standing_order_fragment),
-	                  :class => "gray link"
-	          ) %></span> 
+	                  :class => "gray link") %>
+	                  </span> 
+	                  <%= soffad.text %>
 	</p>        
 </div>
