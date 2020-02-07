@@ -9,7 +9,7 @@
 <code><%= soffad.attributes.except("text") %></code><br>
 <% end %>
 
-<span class="gray">
+<span class="gray" title="<%= standing_order_fragment_show_url(soffad.standing_order_fragment) %>">
 	  <%= link_to('&sect;'.html_safe,
 	                  standing_order_fragment_show_url(soffad.standing_order_fragment),
 	                  :class => "gray link") %>
