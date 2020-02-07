@@ -6,8 +6,23 @@
 	  <% end -%>" id="fragment-<%= soffad.standing_order_fragment.id %>">
 
 <% if params.key?("debug") %>
-<code><%= soffad.attributes.except("text") %></code><br>
+
+<table class="collapse ba br2 b--black-10">
+  <tr class="striped--near-white">
+  <th class="pv2 ph3 tl f6 fw6 ttu">Key</th>
+  <th class="tl f6 ttu fw6 pv2 ph3">Value</th></tr>
+  <% soffad.attributes.each do |k,v| %>
+<tr class="striped--near-white">
+<td class="pv2 ph3 gray"><%= k %></td>
+<td class="pv2 ph3 red b"><%= truncate(v.to_s) %></td></tr>
 <% end %>
+</table><br>
+
+
+<% end %>
+
+
+
 
 <span class="gray" title="<%= standing_order_fragment_show_url(soffad.standing_order_fragment) %>">
 	  <%= link_to('&sect;'.html_safe,
