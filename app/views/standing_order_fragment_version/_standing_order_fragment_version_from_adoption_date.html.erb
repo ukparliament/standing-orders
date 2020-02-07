@@ -1,9 +1,6 @@
 <% soffad = standing_order_fragment_version_from_adoption_date %>
 
-
-<div id='so-<%= soffad.fragment_id %>'>
-
-	<p class="standing-order-fragment paragraph-<%= soffad.fragment_number_in_list %>
+<p id='so-<%= soffad.fragment_id %>' class="standing-order-fragment paragraph-<%= soffad.fragment_number_in_list %>
 	
 	<% if @standing_order_fragment && @standing_order_fragment.standing_order_fragment_versions.last == soffad %>outline pa2
 	  <% end -%>" id="fragment-<%= soffad.standing_order_fragment.id %>">
@@ -19,13 +16,7 @@
 	                  </span>
 	                  
 	  <% if soffad.fragment_number_in_list == 1 %>
-	  
-	    <strong><%= soffad.standing_order_number + '.' %></strong>
+	<strong><%= soffad.standing_order_number + '.' %></strong>
 	    <% end  %>
-
-
-
-	   
-	                  <%= soffad.text %>
+	    <%= soffad.text.gsub(' ;', ';').gsub(' :', ':') %>
 	</p>        
-</div>
