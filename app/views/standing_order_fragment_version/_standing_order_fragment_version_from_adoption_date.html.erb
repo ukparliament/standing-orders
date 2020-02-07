@@ -12,6 +12,12 @@
 <code><%= soffad.attributes.except("text") %></code><br>
 <% end %>
 
+<span class="gray">
+	  <%= link_to('&sect;'.html_safe,
+	                  standing_order_fragment_show_url(soffad.standing_order_fragment),
+	                  :class => "gray link") %>
+	                  </span>
+	                  
 	  <% if soffad.fragment_number_in_list == 1 %>
 	  
 	    <strong><%= soffad.standing_order_number + '.' %></strong>
@@ -19,11 +25,7 @@
 
 
 
-	  <span class="gray pl1">
-	  <%= link_to('&sect;'.html_safe,
-	                  standing_order_fragment_show_url(soffad.standing_order_fragment),
-	                  :class => "gray link") %>
-	                  </span> 
+	   
 	                  <%= soffad.text %>
 	</p>        
 </div>
