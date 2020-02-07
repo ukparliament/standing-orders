@@ -14,7 +14,7 @@
 
 	  <%= content_tag(
 	          :span,
-	          link_to(' ['.html_safe + standing_order_fragment_version_from_adoption_date.standing_order_fragment_id.to_s+ ']',
+	          link_to(' &sect; '.html_safe + standing_order_fragment_version_from_adoption_date.standing_order_fragment_id.to_s,
 	                  standing_order_fragment_show_url(standing_order_fragment_version_from_adoption_date.standing_order_fragment),
 	                  :class => "link gray"
 	          )
