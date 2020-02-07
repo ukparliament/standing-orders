@@ -7,14 +7,16 @@
 
 <% if params.key?("debug") %>
 
-<table class="collapse ba br2 b--black-10">
+<table class="collapse">
   <tr class="striped--near-white">
+    <th class="tr f6 ttu fw6 pv2 ph3">Value</th>
   <th class="pv2 ph3 tl f6 fw6 ttu">Key</th>
-  <th class="tl f6 ttu fw6 pv2 ph3">Value</th></tr>
+  </tr>
   <% soffad.attributes.each do |k,v| %>
 <tr class="striped--near-white">
-<td class="pv2 ph3 gray"><%= k %></td>
-<td class="pv2 ph3 red b"><%= truncate(v.to_s) %></td></tr>
+<td class="pv2 ph3 b tr"><%= truncate(v.to_s) %></td>
+<td class="pv2 ph3"><%= k %></td>
+</tr>
 <% end %>
 </table><br>
 
