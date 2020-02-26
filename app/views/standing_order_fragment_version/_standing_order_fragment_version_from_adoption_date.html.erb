@@ -5,23 +5,7 @@
 	<% if @standing_order_fragment && @standing_order_fragment.standing_order_fragment_versions.last == soffad %>outline pa2
 	  <% end -%>" id="fragment-<%= soffad.standing_order_fragment.id %>">
 
-<% if params.key?("debug") %>
 
-<table class="collapse">
-  <tr class="striped--near-white">
-    <th class="tr f6 ttu fw6 pv2 ph3">Value</th>
-  <th class="pv2 ph3 tl f6 fw6 ttu">Key</th>
-  </tr>
-  <% soffad.attributes.each do |k,v| %>
-<tr class="striped--near-white">
-<td class="pv2 ph3 b tr"><%= truncate(v.to_s) %></td>
-<td class="pv2 ph3"><%= k %></td>
-</tr>
-<% end %>
-</table><br>
-
-
-<% end %>
 
 
 
