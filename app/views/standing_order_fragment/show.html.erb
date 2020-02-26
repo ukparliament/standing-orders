@@ -5,19 +5,19 @@
 	<p>This Standing Order fragment has not been revoked and has not lapsed.</p>
 
 
-		<h2 class='lh-title'>Standing Order fragment, within the Standing Order in the context of the most recent adoption</h2>
+		<h2>Standing Order fragment, within the Standing Order in the context of the most recent adoption</h2>
 		
 	<% else -%>
 	<p>This Standing Order fragment has been revoked or has lapsed.</p>
 		
-		<h3 class='lh-title'>Standing Order fragment, within the Standing Order in the context of the most recent adoption of which it formed part</h3>
+		<h3>Standing Order fragment, within the Standing Order in the context of the most recent adoption of which it formed part</h3>
 		
 	<% end -%>
 	
 	<%= render :partial => 'standing_order_fragment_version/standing_order_fragment_version_from_adoption_date', :collection => @standing_order_fragment.standing_order_fragment_versions_in_context %>
 
 
-<h3 class='lh-title'>Appearance history</h3>
+<h3>Appearance history</h3>
 
 <p>
 			<%= content_tag( 'span', link_to( @standing_order_fragment.first_version.adoption_date.display_date, adoption_date_show_url( :adoption_date => @standing_order_fragment.standing_order_fragment_versions.first.adoption_date, :anchor => "fragment-#{@standing_order_fragment.id}" ) ), :class => 'date-cell' ) %>

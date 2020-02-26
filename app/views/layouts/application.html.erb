@@ -3,29 +3,25 @@
 	<head>
 		<meta charset="utf-8">
   	  <title>Standing Orders</title>
-	  <%= stylesheet_link_tag 'application' %>
 	  <meta name="viewport" content="width=device-width, initial-scale=1">
+	  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/kognise/water.css@latest/dist/light.min.css">
     <link rel='dns-prefetch' href='//standing-orders.herokuapp.com'>
 	</head>
-	<body id="<%= Rails.env %>-environment" class="sans-serif near-black bg-white center w-60-ns pa3">
+	<body id="<%= Rails.env %>-environment">
 	
 <header>
 
 			<nav><a href="/">House of Commons Public Standing Orders</a></nav>
 			
-			<h1 class="lh-title f3 normal"><%= yield(:title) %></h1>
+			<h1><%= yield(:title) %></h1>
 
 		</header>
 		
-		<main class="lh-copy f4 pv3">
-
-
-			<%= yield %>
-		</main>
+		<main><%= yield %></main>
 		
-		<footer class="lh-copy measure-wide">
+		<footer>
 		
-		<cite class="fs-normal">
+		<cite>
 		
 		<p>UK House of Commons Standing Orders Dataset, Version 1.1.0, ParlRulesData Project. 2019.</p>
 
