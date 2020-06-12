@@ -3,44 +3,28 @@
 	<head>
 		<meta charset="utf-8">
   	  <title>Standing Orders</title>
-	  <%= stylesheet_link_tag 'application' %>
 	  <meta name="viewport" content="width=device-width, initial-scale=1">
+	  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/kognise/water.css@latest/dist/light.min.css">
+	  <style>
+	  .outline {border:thin solid gray;padding:1rem;}
+	  </style>
     <link rel='dns-prefetch' href='//standing-orders.herokuapp.com'>
 	</head>
-	<body id="<%= Rails.env %>-environment" class="sans-serif near-black bg-white center measure-wide pa3">
+	<body id="<%= Rails.env %>-environment">
 	
-<header class="">
+<header>
 
-			<nav><a href="/" class="">House of Commons Public Standing Orders</a></nav>
+			<nav><a href="/">House of Commons Public Standing Orders</a></nav>
 			
-			<h1 class="lh-title f3"><%= yield(:title) %></h1>
+			<h1><%= yield(:title) %></h1>
 
 		</header>
 		
-		<main class="lh-copy measure-wide pv3">
+		<main><%= yield %></main>
 		
+		<footer>
 		
-<!-- 
-		<div class="flex justify-center">
-  <div class="outline w-5 pa3 mr1">
-    <code>1</code>
-  </div>
-  <div class="outline w-90 pa3 mr1">
-    <code>2</code>
-  </div>
-  <div class="outline w-5 pa3 mr1">
-    <code>3</code>
-  </div>
-</div>
- -->
-
-
-			<%= yield %>
-		</main>
-		
-		<footer class="lh-copy measure-wide">
-		
-		<cite class="fs-normal">
+		<cite>
 		
 		<p>UK House of Commons Standing Orders Dataset, Version 1.2.0, ParlRulesData Project. 2019.</p>
 
