@@ -1,0 +1,3 @@
+<% content_for :title, "Data dump" %>
+
+<%= content_tag( 'p', "A Postgres dump of the processed data is #{link_to( 'available to download here', '/data.zip' )}.".html_safe ) %>

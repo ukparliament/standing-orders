@@ -1,0 +1,6 @@
+<% content_for :title, "About this application" %>
+
+<ol>
+	<%= content_tag( 'li', link_to( 'Database schema', meta_schema_url ) ) %>
+	<%= content_tag( 'li', link_to( 'Data dump', meta_dump_url ) ) %>
+</ol>
