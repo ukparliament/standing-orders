@@ -2,6 +2,15 @@ Rails.application.routes.draw do
   
   get '/' =>'home#index', as: :home
   
+  
+  
+  
+  
+  
+  
+  
+  
+  
   get 'adoption-dates' => 'adoption_date#index', as: :adoption_date_list
   
   get 'adoption-dates/:adoption_date' => 'adoption_date#show', as: :adoption_date_show
