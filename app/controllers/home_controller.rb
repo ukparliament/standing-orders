@@ -1,7 +1,6 @@
 class HomeController < ApplicationController
   
   def index
-    @adoption_dates = AdoptionDate.all.order( 'date asc' )
+    @adoptions = Adoption.all.order( 'ordinality asc' )
   end
-  
 end
