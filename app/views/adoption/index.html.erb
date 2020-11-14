@@ -1,0 +1,11 @@
+
+<% content_for :title, "Adoptions" %>
+
+<ol id="adoption_dates" class="list pl0">
+	<%= render(
+		:partial => 'adoption/adoption', 
+		:collection => @adoptions, 
+		cached: true
+		) %>
+</ol>
+
