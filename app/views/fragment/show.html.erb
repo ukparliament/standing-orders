@@ -1,4 +1,4 @@
 <% content_for :title, @fragment.id.to_s %>
 <table>
-	<%= render :partial => 'fragment_version/fragment_version', :collection => @fragment.fragment_versions %>
+	<%= render :partial => 'fragment_version/fragment_version_from_fragment', :collection => @fragment.fragment_versions %>
 </table>
