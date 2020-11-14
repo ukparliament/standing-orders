@@ -1,14 +1,36 @@
 require 'csv'
 
 task :setup => [
-  :import_adoptions
+  :import_adoptions,
+  :import_fragment_versions
 ]
 
 task :import_adoptions => :environment do
+  puts "importing adoptions"
   CSV.foreach( 'db/data/2.0.0/adoptions.csv' ) do |row|
     adoption = Adoption.new
     adoption.date = row[3].to_date
     adoption.parlrules_identifier = row[2].strip
     adoption.save
+  end
+end
+task :import_fragment_versions => :environment do
+  puts "importing fragment versions"
+  CSV.foreach( 'db/data/2.0.0/fragment_versions.csv' ) do |row|
+    adoption = Adoption.all.where( 'parlrules_identifier = ?', row[2] ).first
+    if adoption
+      fragment_version = FragmentVersion.new
+      fragment_version.adoption = adoption
+      fragment_version.parlrules_identifier = row[3]
+      fragment_version.current_number = row[4]
+      fragment_version.root_number = row[5]
+      fragment_version.text = row[6]
+      fragment_version.parlrules_article_identifier = row[7]
+      fragment_version.article_current_number = row[8]
+      fragment_version.article_root_number = row[9]
+      fragment_version.save
+    else
+      puts "No corresponding adoption found"
+    end
   end
 end
