@@ -1,4 +1,4 @@
 <tr>
-	<%= content_tag( 'td', fragment_version_from_fragment.adoption.display_date ) %>
+	<%= content_tag( 'td', link_to( fragment_version_from_fragment.adoption.display_date, adoption_show_url( :adoption => fragment_version_from_fragment.adoption, :anchor => "fragment-#{@fragment.id}" ) ) ) %>
 	<%= content_tag( 'td', fragment_version_from_fragment.text ) %>
 </tr>
