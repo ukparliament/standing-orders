@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(version: 0) do
 
   create_table "fragment_versions", force: :cascade do |t|
     t.integer "adoption_id",                             null: false
+    t.integer "fragment_id"
     t.string  "parlrules_identifier",         limit: 20, null: false
     t.string  "current_number",               limit: 20, null: false
     t.string  "root_number",                  limit: 20, null: false
@@ -33,5 +34,10 @@ ActiveRecord::Schema.define(version: 0) do
     t.string  "article_root_number",          limit: 20, null: false
   end
 
+  create_table "fragments", force: :cascade do |t|
+    t.string "parlrules_identifier", limit: 20, null: false
+  end
+
   add_foreign_key "fragment_versions", "adoptions", name: "fk_adoption"
+  add_foreign_key "fragment_versions", "fragments", name: "fk_fragment"
 end
