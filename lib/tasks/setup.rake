@@ -2,7 +2,8 @@ require 'csv'
 
 task :setup => [
   :import_adoptions,
-  :import_fragment_versions
+  :import_fragment_versions,
+  :inflate_fragments
 ]
 
 task :import_adoptions => :environment do
@@ -32,5 +33,21 @@ task :import_fragment_versions => :environment do
     else
       puts "No corresponding adoption found"
     end
+  end
+end
+task :inflate_fragments => :environment do
+  puts "inflating fragments from fragment versions"
+  fragment_versions = FragmentVersion.all
+  fragment_versions.each do |fragment_version|
+    fragment = Fragment.all.where( 'parlrules_identifier =?', fragment_version.root_number ).first
+    if fragment
+      fragment_version.fragment = fragment
+    else
+      fragment = Fragment.new
+      fragment.parlrules_identifier = fragment_version.root_number
+      fragment.save
+    end
+    fragment_version.fragment = fragment
+    fragment_version.save
   end
 end
