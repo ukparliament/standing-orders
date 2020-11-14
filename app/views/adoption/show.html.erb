@@ -1,0 +1,5 @@
+<% content_for :title, @adoption.display_date %>
+
+<ol>
+	<%= render :partial => 'fragment_version/fragment_version', :collection => @adoption.fragment_versions %>
+</ol>
