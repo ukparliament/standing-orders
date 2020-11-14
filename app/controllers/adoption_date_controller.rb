@@ -8,5 +8,4 @@ class AdoptionDateController < ApplicationController
     adoption_date = params[:adoption_date]
     @adoption_date = AdoptionDate.find( adoption_date )
   end
-  
 end
