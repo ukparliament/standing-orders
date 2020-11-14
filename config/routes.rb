@@ -2,6 +2,9 @@ Rails.application.routes.draw do
   
   get '/' =>'home#index', as: :home
   
+  get 'adoptions' => 'adoption#index', as: :adoption_list
+  get 'adoptions/:adoption' => 'adoption#show', as: :adoption_show
+  
   
   
   
