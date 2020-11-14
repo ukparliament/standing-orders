@@ -22,4 +22,16 @@ ActiveRecord::Schema.define(version: 0) do
     t.string  "parlrules_identifier", limit: 20,                                                           null: false
   end
 
+  create_table "fragment_versions", force: :cascade do |t|
+    t.integer "adoption_id",                             null: false
+    t.string  "parlrules_identifier",         limit: 20, null: false
+    t.string  "current_number",               limit: 20, null: false
+    t.string  "root_number",                  limit: 20, null: false
+    t.text    "text",                                    null: false
+    t.string  "parlrules_article_identifier", limit: 20, null: false
+    t.string  "article_current_number",       limit: 20, null: false
+    t.string  "article_root_number",          limit: 20, null: false
+  end
+
+  add_foreign_key "fragment_versions", "adoptions", name: "fk_adoption"
 end
