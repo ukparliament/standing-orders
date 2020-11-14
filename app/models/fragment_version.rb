@@ -1,6 +1,7 @@
 class FragmentVersion < ActiveRecord::Base
   
   belongs_to :adoption
+  belongs_to :fragment
   
   def display_number
     display_number = ''
