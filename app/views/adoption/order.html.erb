@@ -1,0 +1,5 @@
+<% content_for :title, "Orders - #{@adoption.display_date}".html_safe %>
+
+<table>
+	<%= render :partial => 'order_version/order_version', :collection => @adoption.order_versions %>
+</table>
