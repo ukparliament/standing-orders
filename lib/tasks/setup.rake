@@ -4,7 +4,8 @@ task :setup => [
   :import_adoptions,
   :import_fragment_versions,
   :inflate_fragments,
-  :import_order_versions
+  :import_order_versions,
+  :inflate_orders
 ]
 
 task :import_adoptions => :environment do
@@ -67,5 +68,21 @@ task :import_order_versions => :environment do
     else
       puts "No corresponding adoption found"
     end
+  end
+end
+task :inflate_orders => :environment do
+  puts "inflating orders from order versions"
+  order_versions = OrderVersion.all
+  order_versions.each do |order_version|
+    order = Order.all.where( 'parlrules_identifier =?', order_version.root_number ).first
+    if order
+      order_version.order = order
+    else
+      order = Order.new
+      order.parlrules_identifier = order_version.root_number
+      order.save
+    end
+    order_version.order = order
+    order_version.save
   end
 end
