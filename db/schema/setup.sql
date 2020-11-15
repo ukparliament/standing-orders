@@ -44,6 +44,7 @@ create table order_versions (
 	current_number varchar(20) not null,
 	root_number varchar(20) not null,
 	text text not null,
+	marked_up_text text,
 	constraint fk_adoption foreign key (adoption_id) references adoptions(id),
 	constraint fk_order foreign key (order_id) references orders(id),
 	primary key (id)
