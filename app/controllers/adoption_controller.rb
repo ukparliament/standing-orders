@@ -8,4 +8,14 @@ class AdoptionController < ApplicationController
     adoption = params[:adoption]
     @adoption = Adoption.find( adoption )
   end
+  
+  def fragment
+    adoption = params[:adoption]
+    @adoption = Adoption.find( adoption )
+  end
+  
+  def order
+    adoption = params[:adoption]
+    @adoption = Adoption.find( adoption )
+  end
 end
