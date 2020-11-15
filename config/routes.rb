@@ -10,6 +10,9 @@ Rails.application.routes.draw do
   get 'fragments' => 'fragment#index', as: :fragment_list
   get 'fragments/:fragment' => 'fragment#show', as: :fragment_show
   
+  get 'orders' => 'order#index', as: :order_list
+  get 'orders/:order' => 'order#show', as: :order_show
+  
   
   
   
