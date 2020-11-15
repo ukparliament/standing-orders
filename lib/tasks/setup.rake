@@ -63,7 +63,7 @@ task :import_order_versions => :environment do
       order_version.current_number = row[4].strip
       order_version.root_number = row[5].strip
       order_version.text = row[6].strip
-      #order_version.save
+      order_version.save
     else
       puts "No corresponding adoption found"
     end
