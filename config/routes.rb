@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   
   get 'adoptions' => 'adoption#index', as: :adoption_list
   get 'adoptions/:adoption' => 'adoption#show', as: :adoption_show
+  get 'adoptions/:adoption/orders' => 'adoption#order', as: :adoption_order
+  get 'adoptions/:adoption/fragments' => 'adoption#fragment', as: :adoption_fragment
   
   get 'fragments' => 'fragment#index', as: :fragment_list
   get 'fragments/:fragment' => 'fragment#show', as: :fragment_show
