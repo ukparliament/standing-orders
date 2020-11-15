@@ -5,7 +5,8 @@ task :setup => [
   :import_fragment_versions,
   :inflate_fragments,
   :import_order_versions,
-  :inflate_orders
+  :inflate_orders,
+  :markup_newlines_on_order_versions
 ]
 
 task :import_adoptions => :environment do
@@ -83,6 +84,18 @@ task :inflate_orders => :environment do
       order.save
     end
     order_version.order = order
+    order_version.save
+  end
+end
+task :markup_newlines_on_order_versions => :environment do
+  puts "replacing newlines with paragraphs on order versions"
+  order_versions = OrderVersion.all
+  order_versions.each do |order_version|
+    marked_up_text = '<p>' + order_version.text + '</p>'
+    if order_version.text.include?( '[NEWLINE]' )
+      marked_up_text = marked_up_text.gsub( '[NEWLINE]', '</p><p>')
+    end
+    order_version.marked_up_text = marked_up_text
     order_version.save
   end
 end
