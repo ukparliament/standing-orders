@@ -1,4 +1,4 @@
 <% content_for :title, "Order #{@order.id.to_s}" %>
 <table>
-	<%= render :partial => 'order_version/order_version', :collection => @order.order_versions %>
+	<%= render :partial => 'order_version/order_version_from_order', :collection => @order.order_versions %>
 </table>
