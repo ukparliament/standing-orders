@@ -11,26 +11,6 @@ create table adoptions (
 	parlrules_identifier varchar(20) not null,
 	primary key (id)
 );
-create table fragments (
-	id serial not null,
-	parlrules_identifier varchar(20) not null,
-	primary key (id)
-);
-create table fragment_versions (
-	id serial not null,
-	adoption_id int not null,
-	fragment_id int,
-	parlrules_identifier varchar(20) not null,
-	current_number varchar(20) not null,
-	root_number varchar(20) not null,
-	text text not null,
-	parlrules_article_identifier varchar(20) not null,
-	article_current_number varchar(20) not null,
-	article_root_number varchar(20) not null,
-	constraint fk_adoption foreign key (adoption_id) references adoptions(id),
-	constraint fk_fragment foreign key (fragment_id) references fragments(id),
-	primary key (id)
-);
 create table orders (
 	id serial not null,
 	parlrules_identifier varchar(20) not null,
@@ -46,6 +26,28 @@ create table order_versions (
 	text text not null,
 	marked_up_text text,
 	constraint fk_adoption foreign key (adoption_id) references adoptions(id),
+	constraint fk_order foreign key (order_id) references orders(id),
+	primary key (id)
+);
+create table fragments (
+	id serial not null,
+	parlrules_identifier varchar(20) not null,
+	primary key (id)
+);
+create table fragment_versions (
+	id serial not null,
+	adoption_id int not null,
+	fragment_id int,
+	order_id int,
+	parlrules_identifier varchar(20) not null,
+	current_number varchar(20) not null,
+	root_number varchar(20) not null,
+	text text not null,
+	parlrules_article_identifier varchar(20) not null,
+	article_current_number varchar(20) not null,
+	article_root_number varchar(20) not null,
+	constraint fk_adoption foreign key (adoption_id) references adoptions(id),
+	constraint fk_fragment foreign key (fragment_id) references fragments(id),
 	constraint fk_order foreign key (order_id) references orders(id),
 	primary key (id)
 );
