@@ -1,0 +1,2 @@
+class FragmentVersionController < ApplicationController
+end

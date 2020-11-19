@@ -1,5 +1,5 @@
 <tr>
-	<%= content_tag( 'td', link_to( order_version_from_order.adoption.display_date, adoption_show_url( :adoption => order_version_from_order.adoption ) ) ) %>
+	<%= content_tag( 'td', link_to( order_version_from_order.adoption.display_date, adoption_show_url( :adoption => order_version_from_order.adoption, :anchor => "order-#{order_version_from_order.order_id}" ) ) ) %>
 	<%= content_tag( 'td', order_version_from_order.display_number ) %>
 	<%= content_tag( 'td', order_version_from_order.marked_up_text.html_safe ) %>
 </tr>

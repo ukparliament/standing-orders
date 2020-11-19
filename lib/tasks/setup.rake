@@ -6,7 +6,8 @@ task :setup => [
   :inflate_fragments,
   :import_order_versions,
   :inflate_orders,
-  :markup_newlines_on_order_versions
+  :markup_newlines_on_order_versions,
+  :link_fragment_versions_to_orders
 ]
 
 task :import_adoptions => :environment do
@@ -97,5 +98,18 @@ task :markup_newlines_on_order_versions => :environment do
     end
     order_version.marked_up_text = marked_up_text
     order_version.save
+  end
+end
+task :link_fragment_versions_to_orders => :environment do
+  puts "linking fragment version to orders"
+  fragment_versions = FragmentVersion.all
+  fragment_versions.each do |fragment_version|
+    order = Order.all.where( 'parlrules_identifier = ?', fragment_version.article_root_number ).first
+    if order
+      fragment_version.order = order
+      fragment_version.save
+    else
+      puts "Unable to find order associated with fragment version"
+    end
   end
 end
