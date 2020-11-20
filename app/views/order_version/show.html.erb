@@ -1,0 +1,34 @@
+<%= content_tag( 'h1', "Order version #{@order_version.id}" ) %>
+
+<table>
+	<tbody>
+		<tr>
+			<th>Adoption</th>
+			<td><%= link_to( @order_version.adoption.display_date, adoption_show_url( :adoption =>  @order_version.adoption ) ) %></td>
+		</tr>
+		<tr>
+			<th>Part of order</th>
+			<td><%= link_to( @order_version.order.id, order_show_url( :order =>  @order_version.order ) ) %></td>
+		</tr>
+		<tr>
+			<th>Number</th>
+			<td><%= @order_version.current_number %></td>
+		</tr>
+		<tr>
+			<th>Text</th>
+			<td><%= @order_version.text %></td>
+		</tr>
+		<tr>
+			<th>Marked up text</th>
+			<td><%= @order_version.marked_up_text.html_safe %></td>
+		</tr>
+		<tr>
+			<th>Parlrules identifier</th>
+			<td><%= @order_version.parlrules_identifier %></td>
+		</tr>
+	</tbody>
+</table>
+<%= @order_version.fragment_versions.size %>
+<table>
+<%= render :partial => 'fragment_version/fragment_version', :collection => @order_version.fragment_versions %>
+</table>
