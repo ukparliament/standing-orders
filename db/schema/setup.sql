@@ -23,8 +23,6 @@ create table order_versions (
 	parlrules_identifier varchar(20) not null,
 	current_number varchar(20) not null,
 	root_number varchar(20) not null,
-	text text not null,
-	marked_up_text text,
 	constraint fk_adoption foreign key (adoption_id) references adoptions(id),
 	constraint fk_order foreign key (order_id) references orders(id),
 	primary key (id)
@@ -39,6 +37,7 @@ create table fragment_versions (
 	adoption_id int not null,
 	fragment_id int,
 	order_id int,
+	order_version_id int,
 	parlrules_identifier varchar(20) not null,
 	current_number varchar(20) not null,
 	root_number varchar(20) not null,
@@ -49,5 +48,6 @@ create table fragment_versions (
 	constraint fk_adoption foreign key (adoption_id) references adoptions(id),
 	constraint fk_fragment foreign key (fragment_id) references fragments(id),
 	constraint fk_order foreign key (order_id) references orders(id),
+	constraint fk_order_version foreign key (order_version_id) references order_versions(id),
 	primary key (id)
 );
