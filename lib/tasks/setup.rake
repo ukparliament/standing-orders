@@ -6,8 +6,8 @@ task :setup => [
   :inflate_fragments,
   :import_order_versions,
   :inflate_orders,
-  :markup_newlines_on_order_versions,
-  :link_fragment_versions_to_orders
+  :link_fragment_versions_to_orders,
+  :link_fragment_versions_to_order_versions
 ]
 
 task :import_adoptions => :environment do
@@ -65,7 +65,6 @@ task :import_order_versions => :environment do
       order_version.parlrules_identifier = row[3].strip
       order_version.current_number = row[4].strip
       order_version.root_number = row[5].strip
-      order_version.text = row[6].strip
       order_version.save
     else
       puts "No corresponding adoption found"
@@ -88,20 +87,8 @@ task :inflate_orders => :environment do
     order_version.save
   end
 end
-task :markup_newlines_on_order_versions => :environment do
-  puts "replacing newlines with paragraphs on order versions"
-  order_versions = OrderVersion.all
-  order_versions.each do |order_version|
-    marked_up_text = '<p>' + order_version.text + '</p>'
-    if order_version.text.include?( '[NEWLINE]' )
-      marked_up_text = marked_up_text.gsub( '[NEWLINE]', '</p><p>')
-    end
-    order_version.marked_up_text = marked_up_text
-    order_version.save
-  end
-end
 task :link_fragment_versions_to_orders => :environment do
-  puts "linking fragment version to orders"
+  puts "linking fragment versions to orders"
   fragment_versions = FragmentVersion.all
   fragment_versions.each do |fragment_version|
     order = Order.all.where( 'parlrules_identifier = ?', fragment_version.article_root_number ).first
@@ -110,6 +97,19 @@ task :link_fragment_versions_to_orders => :environment do
       fragment_version.save
     else
       puts "Unable to find order associated with fragment version"
+    end
+  end
+end
+task :link_fragment_versions_to_order_versions => :environment do
+  puts "linking fragment versions to order versions"
+  fragment_versions = FragmentVersion.all
+  fragment_versions.each do |fragment_version|
+    order_version = OrderVersion.all.where( 'parlrules_identifier = ? and adoption_id = ?', fragment_version.parlrules_article_identifier, fragment_version.adoption_id ).first
+    if order_version
+      fragment_version.order_version = order_version
+      fragment_version.save
+    else
+      puts "Unable to find order version associated with fragment version"
     end
   end
 end
