@@ -16,6 +16,9 @@ Rails.application.routes.draw do
   get 'order-versions' => 'order_version#index', as: :order_version_list
   get 'order-versions/:order_version' => 'order_version#show', as: :order_version_show
   
+  get 'fragment-versions' => 'fragment_version#index', as: :fragment_version_list
+  get 'fragment-versions/:fragment_version' => 'fragment_version#show', as: :fragment_version_show
+  
   
   
   
