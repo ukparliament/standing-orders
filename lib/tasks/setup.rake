@@ -1,7 +1,7 @@
 require 'csv'
 
 task :setup => [
-  :import_adoptions,
+  :import_revision_sets,
   :import_fragment_versions,
   :inflate_fragments,
   :import_order_versions,
@@ -10,22 +10,22 @@ task :setup => [
   :link_fragment_versions_to_order_versions
 ]
 
-task :import_adoptions => :environment do
-  puts "importing adoptions"
-  CSV.foreach( 'db/data/2.0.0/adoptions.csv' ) do |row|
-    adoption = Adoption.new
-    adoption.date = row[3].to_date
-    adoption.parlrules_identifier = row[2].strip
-    adoption.save
+task :import_revision_sets => :environment do
+  puts "importing revision sets"
+  CSV.foreach( 'db/data/2.0.0/revision_sets.csv' ) do |row|
+    revision_set = RevisionSet.new
+    revision_set.date = row[3].to_date
+    revision_set.parlrules_identifier = row[2].strip
+    revision_set.save
   end
 end
 task :import_fragment_versions => :environment do
   puts "importing fragment versions"
   CSV.foreach( 'db/data/2.0.0/fragment_versions.csv' ) do |row|
-    adoption = Adoption.all.where( 'parlrules_identifier = ?', row[2].strip ).first
-    if adoption
+    revision_set = RevisionSet.all.where( 'parlrules_identifier = ?', row[2].strip ).first
+    if revision_set
       fragment_version = FragmentVersion.new
-      fragment_version.adoption = adoption
+      fragment_version.revision_set = revision_set
       fragment_version.parlrules_identifier = row[3].strip
       fragment_version.current_number = row[4].strip
       fragment_version.root_number = row[5].strip
@@ -35,7 +35,7 @@ task :import_fragment_versions => :environment do
       fragment_version.article_root_number = row[9].strip
       fragment_version.save
     else
-      puts "No corresponding adoption found"
+      puts "No corresponding revision set found"
     end
   end
 end
@@ -56,18 +56,18 @@ task :inflate_fragments => :environment do
   end
 end
 task :import_order_versions => :environment do
-  puts "importing fragment versions"
+  puts "importing order versions"
   CSV.foreach( 'db/data/2.0.0/order_versions.csv' ) do |row|
-    adoption = Adoption.all.where( 'parlrules_identifier = ?', row[2].strip ).first
-    if adoption
+    revision_set = RevisionSet.all.where( 'parlrules_identifier = ?', row[2].strip ).first
+    if revision_set
       order_version = OrderVersion.new
-      order_version.adoption = adoption
+      order_version.revision_set = revision_set
       order_version.parlrules_identifier = row[3].strip
       order_version.current_number = row[4].strip
       order_version.root_number = row[5].strip
       order_version.save
     else
-      puts "No corresponding adoption found"
+      puts "No corresponding revision set found"
     end
   end
 end
@@ -104,7 +104,7 @@ task :link_fragment_versions_to_order_versions => :environment do
   puts "linking fragment versions to order versions"
   fragment_versions = FragmentVersion.all
   fragment_versions.each do |fragment_version|
-    order_version = OrderVersion.all.where( 'parlrules_identifier = ? and adoption_id = ?', fragment_version.parlrules_article_identifier, fragment_version.adoption_id ).first
+    order_version = OrderVersion.all.where( 'parlrules_identifier = ? and revision_set_id = ?', fragment_version.parlrules_article_identifier, fragment_version.revision_set_id ).first
     if order_version
       fragment_version.order_version = order_version
       fragment_version.save
