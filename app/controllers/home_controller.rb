@@ -1,6 +1,6 @@
 class HomeController < ApplicationController
   
   def index
-    @adoptions = Adoption.all.order( 'ordinality asc' )
+    @revision_sets = RevisionSet.all.order( 'ordinality asc' )
   end
 end

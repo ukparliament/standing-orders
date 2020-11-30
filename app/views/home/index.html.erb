@@ -3,10 +3,10 @@
 
 <p>House of Commons Public Standing Orders citable over time, based on data from <a href="https://parlrulesdata.org/">the ParlRules project</a>.</p>
 
-<ol id="adoption_dates" class="list pl0">
+<ol id="revision_sets" class="list pl0">
 	<%= render(
-		:partial => 'adoption/adoption', 
-		:collection => @adoptions, 
+		:partial => 'revision_set/revision_set', 
+		:collection => @revision_sets, 
 		cached: true
 		) %>
 </ol>
