@@ -16,15 +16,11 @@ ActiveRecord::Schema.define(version: 0) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "adoptions", force: :cascade do |t|
-    t.date    "date",                                                                                      null: false
-    t.integer "ordinality",                      default: "nextval('adoptions_ordinality_seq'::regclass)", null: false
-    t.string  "parlrules_identifier", limit: 20,                                                           null: false
-  end
-
   create_table "fragment_versions", force: :cascade do |t|
-    t.integer "adoption_id",                             null: false
+    t.integer "revision_set_id",                         null: false
     t.integer "fragment_id"
+    t.integer "order_id"
+    t.integer "order_version_id"
     t.string  "parlrules_identifier",         limit: 20, null: false
     t.string  "current_number",               limit: 20, null: false
     t.string  "root_number",                  limit: 20, null: false
@@ -38,6 +34,28 @@ ActiveRecord::Schema.define(version: 0) do
     t.string "parlrules_identifier", limit: 20, null: false
   end
 
-  add_foreign_key "fragment_versions", "adoptions", name: "fk_adoption"
+  create_table "order_versions", force: :cascade do |t|
+    t.integer "revision_set_id",                 null: false
+    t.integer "order_id"
+    t.string  "parlrules_identifier", limit: 20, null: false
+    t.string  "current_number",       limit: 20, null: false
+    t.string  "root_number",          limit: 20, null: false
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.string "parlrules_identifier", limit: 20, null: false
+  end
+
+  create_table "revision_sets", force: :cascade do |t|
+    t.date    "date",                                                                                          null: false
+    t.integer "ordinality",                      default: "nextval('revision_sets_ordinality_seq'::regclass)", null: false
+    t.string  "parlrules_identifier", limit: 20,                                                               null: false
+  end
+
   add_foreign_key "fragment_versions", "fragments", name: "fk_fragment"
+  add_foreign_key "fragment_versions", "order_versions", name: "fk_order_version"
+  add_foreign_key "fragment_versions", "orders", name: "fk_order"
+  add_foreign_key "fragment_versions", "revision_sets", name: "fk_revision_set"
+  add_foreign_key "order_versions", "orders", name: "fk_order"
+  add_foreign_key "order_versions", "revision_sets", name: "fk_revision_set"
 end
