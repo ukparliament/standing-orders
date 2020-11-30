@@ -2,10 +2,10 @@ Rails.application.routes.draw do
   
   get '/' =>'home#index', as: :home
   
-  get 'adoptions' => 'adoption#index', as: :adoption_list
-  get 'adoptions/:adoption' => 'adoption#show', as: :adoption_show
-  get 'adoptions/:adoption/orders' => 'adoption#order', as: :adoption_order
-  get 'adoptions/:adoption/fragments' => 'adoption#fragment', as: :adoption_fragment
+  get 'revision_sets' => 'revision_set#index', as: :revision_set_list
+  get 'revision_sets/:revision_set' => 'revision_set#show', as: :revision_set_show
+  get 'revision_sets/:revision_set/orders' => 'revision_set#order', as: :revision_set_order
+  get 'revision_sets/:revision_set/fragments' => 'revision_set#fragment', as: :revision_set_fragment
   
   get 'fragments' => 'fragment#index', as: :fragment_list
   get 'fragments/:fragment' => 'fragment#show', as: :fragment_show
