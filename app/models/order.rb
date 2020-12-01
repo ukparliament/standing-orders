@@ -1,6 +1,6 @@
 class Order < ActiveRecord::Base
   
   def order_versions
-    OrderVersion.all.select( 'ov.*, a.date' ).joins( 'as ov, adoptions as a').where( "ov.adoption_id = a.id and ov.order_id = ?", self ).order( 'a.date' )
+    OrderVersion.all.select( 'ov.*, rs.date' ).joins( 'as ov, revision_sets as rs').where( "ov.revision_set_id = rs.id and ov.order_id = ?", self ).order( 'rs.date' )
   end
 end
