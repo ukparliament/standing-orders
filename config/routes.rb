@@ -2,6 +2,12 @@ Rails.application.routes.draw do
   
   get '/' =>'home#index', as: :home
   
+  get 'houses' => 'house#index', as: :house_list
+  get 'houses/:house' => 'house#show', as: :house_show
+  get 'houses/:house/business-extents' => 'house#business_extent_index', as: :house_business_extent_list
+  get 'houses/:house/business-extents/:business_extent' => 'house#business_extent_show', as: :house_business_extent_show
+  get 'houses/:house/business-extents/:business_extent/revision-sets' => 'house#business_extent_revision_set_list', as: :house_business_extent_revision_set_list
+  
   get 'revision-sets' => 'revision_set#index', as: :revision_set_list
   get 'revision-sets/:revision_set' => 'revision_set#show', as: :revision_set_show
   get 'revision-sets/:revision_set/orders' => 'revision_set#order', as: :revision_set_order
