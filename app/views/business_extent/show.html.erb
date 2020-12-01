@@ -1,0 +1,4 @@
+<%= content_tag( 'h1', @business_extent.label ) %>
+<ol>
+	<%= render :partial => 'house/house_from_business_extent', :collection => @houses %>
+</ol>
