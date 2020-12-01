@@ -16,6 +16,8 @@ task :import_revision_sets => :environment do
     revision_set = RevisionSet.new
     revision_set.date = row[3].to_date
     revision_set.parlrules_identifier = row[2].strip
+    revision_set.house_id = 1
+    revision_set.business_extent_id = 1
     revision_set.save
   end
 end
@@ -81,6 +83,8 @@ task :inflate_orders => :environment do
     else
       order = Order.new
       order.parlrules_identifier = order_version.root_number
+      order.house_id = 1
+      order.business_extent_id = 1
       order.save
     end
     order_version.order = order
