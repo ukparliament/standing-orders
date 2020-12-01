@@ -3,8 +3,8 @@
 <table>
 	<tbody>
 		<tr>
-			<th>Adoption</th>
-			<td><%= link_to( @order_version.adoption.display_date, adoption_show_url( :adoption =>  @order_version.adoption ) ) %></td>
+			<th>Revision set</th>
+			<td><%= link_to( @order_version.revision_set.display_date, revision_set_show_url( :revision_set =>  @order_version.revision_set ) ) %></td>
 		</tr>
 		<tr>
 			<th>Part of order</th>
