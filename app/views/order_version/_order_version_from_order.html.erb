@@ -1,5 +1,5 @@
 <tr>
-	<%= content_tag( 'td', link_to( order_version_from_order.adoption.display_date, adoption_show_url( :adoption => order_version_from_order.adoption, :anchor => "order-#{order_version_from_order.order_id}" ) ) ) %>
+	<%= content_tag( 'td', link_to( order_version_from_order.revision_set.display_date, revision_set_show_url( :revision_set => order_version_from_order.revision_set, :anchor => "order-#{order_version_from_order.order_id}" ) ) ) %>
 	<%= content_tag( 'td', order_version_from_order.display_number ) %>
 	<td>
 		<%= render :partial => 'fragment_version/fragment_version_text', :collection => order_version_from_order.fragment_versions %>
