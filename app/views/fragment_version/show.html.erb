@@ -3,8 +3,8 @@
 <table>
 	<tbody>
 		<tr>
-			<th>Adoption</th>
-			<td><%= link_to( @fragment_version.adoption.display_date, adoption_show_url( :adoption =>  @fragment_version.adoption ) ) %></td>
+			<th>Revision set</th>
+			<td><%= link_to( @fragment_version.revision_set.display_date, revision_set_show_url( :revision_set =>  @fragment_version.revision_set ) ) %></td>
 		</tr>
 		<tr>
 			<th>Part of fragment</th>
@@ -29,4 +29,3 @@
 	</tbody>
 </table>
 <%= render :partial => 'fragment_version_text', :object => @fragment_version %>
-
