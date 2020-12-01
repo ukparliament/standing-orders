@@ -8,6 +8,10 @@ Rails.application.routes.draw do
   get 'houses/:house/business-extents/:business_extent' => 'house#business_extent_show', as: :house_business_extent_show
   get 'houses/:house/business-extents/:business_extent/revision-sets' => 'house#business_extent_revision_set_list', as: :house_business_extent_revision_set_list
   
+  get 'business-extents' => 'business_extent#index', as: :business_extent_list
+  get 'business-extents/:business_extent' => 'business_extent#show', as: :business_extent_show
+  get 'business-extents/:business_extent/houses' => 'business_extent#house_index', as: :business_extent_house_list
+  
   get 'revision-sets' => 'revision_set#index', as: :revision_set_list
   get 'revision-sets/:revision_set' => 'revision_set#show', as: :revision_set_show
   get 'revision-sets/:revision_set/orders' => 'revision_set#order', as: :revision_set_order
