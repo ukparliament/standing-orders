@@ -1,0 +1,2 @@
+module BusinessExtentHelper
+end
