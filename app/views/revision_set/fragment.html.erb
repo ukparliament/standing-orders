@@ -1,0 +1,5 @@
+<% content_for :title, "Fragments - #{@revision_set.display_date}".html_safe %>
+
+<table>
+	<%= render :partial => 'fragment_version/fragment_version', :collection => @revision_set.fragment_versions %>
+</table>
