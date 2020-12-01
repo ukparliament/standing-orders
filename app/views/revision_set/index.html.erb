@@ -1,0 +1,11 @@
+
+<% content_for :title, "Revision sets" %>
+
+<ol id="revision_sets" class="list pl0">
+	<%= render(
+		:partial => 'revision_set/revision_set', 
+		:collection => @revision_sets, 
+		cached: true
+		) %>
+</ol>
+
