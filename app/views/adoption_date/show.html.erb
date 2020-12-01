@@ -1,8 +1,0 @@
-<% content_for :title, @adoption_date.display_date %>
-
-<%= render(
-			:partial => 'standing_order_fragment_version/standing_order_fragment_version_from_adoption_date', 
-			:collection => @adoption_date.standing_order_fragment_versions,
-			cached: true
-			)
-%>
