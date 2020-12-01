@@ -1,4 +1,6 @@
 <tr>
 	<%= content_tag( 'td', order_version.display_number ) %>
-	<%= content_tag( 'td', order_version.marked_up_text.html_safe ) %>
+	<td>
+		<%= render :partial => 'fragment_version/fragment_version_text', :collection => order_version.fragment_versions %>
+	</td>
 </tr>
