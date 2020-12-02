@@ -1,0 +1,22 @@
+<%= content_tag( 'h1', "Fragment version #{@revision.from_fragment_version.id} to #{@revision.to_fragment_version.id}".html_safe ) %>
+
+<table>
+	<tbody>
+		<tr>
+			<th>From fragment version</th>
+			<td><%= link_to( @revision.from_fragment_version.id, fragment_version_show_url( :fragment_version => @revision.from_fragment_version ) ) %></td>
+		</tr>
+		<tr>
+			<th>With text</th>
+			<td><%= @revision.from_fragment_version.text %></td>
+		</tr>
+		<tr>
+			<th>To fragment version</th>
+			<td><%= link_to( @revision.to_fragment_version.id, fragment_version_show_url( :fragment_version => @revision.to_fragment_version ) ) %></td>
+		</tr>
+		<tr>
+			<th>With text</th>
+			<td><%= @revision.to_fragment_version.text %></td>
+		</tr>
+	</tbody>
+</table>
