@@ -21,4 +21,9 @@ class FragmentVersion < ActiveRecord::Base
     citation_in_list = citation_in_list[0, citation_in_list.size - 2] if citation_in_list[citation_in_list.size - 2, 2] == '-1'
     citation_in_list
   end
+  
+  def display_label
+    display_title = self.revision_set.display_label
+    display_title = display_title + ' &mdash; Fragment version '.html_safe + self.id.to_s
+  end
 end

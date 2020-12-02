@@ -9,4 +9,9 @@ class RevisionSet < ActiveRecord::Base
     day_format = ActiveSupport::Inflector.ordinalize(date.day)
     date.strftime("<span class='b'>%Y</span> &mdash; #{day_format} %B").html_safe
   end
+
+  def display_label
+    display_label = self.house.name + ' &mdash; ' + self.business_extent.label + ' &mdash; ' + self.display_date
+    display_label.html_safe
+  end
 end
