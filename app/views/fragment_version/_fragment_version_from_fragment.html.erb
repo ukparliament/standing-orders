@@ -1,4 +1,4 @@
 <tr>
-	<%= content_tag( 'td', link_to( fragment_version_from_fragment.revision_set.display_date, revision_set_show_url( :revision_set => fragment_version_from_fragment.revision_set, :anchor => "fragment-#{@fragment.id}" ) ) ) %>
+	<%= content_tag( 'td', link_to( fragment_version_from_fragment.revision_set.display_date, revision_set_show_url( :revision_set => fragment_version_from_fragment.revision_set, :anchor => "fragment-#{fragment_version_from_fragment.citation_in_list}" ) ) ) %>
 	<%= content_tag( 'td', fragment_version_from_fragment.text ) %>
 </tr>
