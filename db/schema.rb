@@ -64,6 +64,12 @@ ActiveRecord::Schema.define(version: 0) do
     t.integer "house_id",                                                                                      null: false
   end
 
+  create_table "revisions", force: :cascade do |t|
+    t.integer "from_fragment_version_id",                 null: false
+    t.integer "to_fragment_version_id",                   null: false
+    t.boolean "is_major",                 default: false
+  end
+
   add_foreign_key "fragment_versions", "fragments", name: "fk_fragment"
   add_foreign_key "fragment_versions", "order_versions", name: "fk_order_version"
   add_foreign_key "fragment_versions", "orders", name: "fk_order"
