@@ -1,3 +1,4 @@
+drop table if exists revisions;
 drop table if exists fragment_versions;
 drop table if exists fragments;
 drop table if exists order_versions;
@@ -72,5 +73,12 @@ create table fragment_versions (
 	constraint fk_fragment foreign key (fragment_id) references fragments(id),
 	constraint fk_order foreign key (order_id) references orders(id),
 	constraint fk_order_version foreign key (order_version_id) references order_versions(id),
+	primary key (id)
+);
+create table revisions (
+	id serial not null,
+	from_fragment_version_id int not null,
+	to_fragment_version_id int not null,
+	is_major boolean default false,
 	primary key (id)
 );
