@@ -5,6 +5,10 @@ class FragmentVersion < ActiveRecord::Base
   belongs_to :order
   belongs_to :order_version
   
+  def preceding_fragment_version
+    FragmentVersion.all.select( 'fv.*' ).joins( 'as fv, revision_sets as rs' ).where( 'fv.revision_set_id = rs.id').where( 'fv.fragment_id = ?', self.fragment_id).where( 'rs.ordinality < ?', self.revision_set.ordinality ).order( 'rs.ordinality desc' ).first
+  end
+  
   def citation_in_list
     citation_in_list = self.parlrules_identifier
     # swap . for -
