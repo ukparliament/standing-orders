@@ -1,4 +1,4 @@
-<% content_for :title, @revision_set.display_date %>
+<% content_for :title, @revision_set.display_label %>
 
 <table>
 	<%= render :partial => 'fragment_version/fragment_version', :collection => @revision_set.fragment_versions %>

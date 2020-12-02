@@ -1,4 +1,4 @@
-<% content_for :title, "Orders - #{@revision_set.display_date}".html_safe %>
+<% content_for :title, "#{@revision_set.display_label} &mdash; Orders".html_safe %>
 
 <table>
 	<%= render :partial => 'order_version/order_version', :collection => @revision_set.order_versions %>
