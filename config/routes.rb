@@ -29,6 +29,9 @@ Rails.application.routes.draw do
   get 'fragment-versions' => 'fragment_version#index', as: :fragment_version_list
   get 'fragment-versions/:fragment_version' => 'fragment_version#show', as: :fragment_version_show
   
+  get 'revisions' => 'revision#index', as: :revision_list
+  get 'revisions/:revision' => 'revision#show', as: :revision_show
+  
   get 'meta' => 'meta#index', as: :meta_list
   get 'meta/schema' => 'meta#schema', as: :meta_schema
   get 'meta/dump' => 'meta#dump', as: :meta_dump
