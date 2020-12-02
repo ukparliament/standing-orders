@@ -7,7 +7,8 @@ task :setup => [
   :import_order_versions,
   :inflate_orders,
   :link_fragment_versions_to_orders,
-  :link_fragment_versions_to_order_versions
+  :link_fragment_versions_to_order_versions,
+  :inflate_fragment_version_revisions
 ]
 
 task :import_revision_sets => :environment do
@@ -114,6 +115,25 @@ task :link_fragment_versions_to_order_versions => :environment do
       fragment_version.save
     else
       puts "Unable to find order version associated with fragment version"
+    end
+  end
+end
+task :inflate_fragment_version_revisions => :environment do
+  puts "inflating fragment version revisions"
+  fragments = Fragment.all
+  fragments.each do |fragment|
+    fragment.fragment_versions.each do |fragment_version|
+      if fragment_version.preceding_fragment_version
+        if fragment_version.text != fragment_version.preceding_fragment_version.text
+          revision = Revision.new
+          revision.from_fragment_version_id = fragment_version.preceding_fragment_version.id
+          revision.to_fragment_version_id = fragment_version.id
+          if fragment_version.text.downcase != fragment_version.preceding_fragment_version.text.downcase
+            revision.is_major = true
+          end
+          revision.save
+        end
+      end
     end
   end
 end
