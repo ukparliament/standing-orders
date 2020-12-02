@@ -1,4 +1,4 @@
-<%= content_tag( 'h1', "#{@house.name} - Business extents" ) %>
+<%= content_tag( 'h1', "#{@house.name} &mdash; Business extents".html_safe ) %>
 <ol>
 	<%= render :partial => 'business_extent/business_extent_from_house', :collection => @business_extents %>
 </ol>
