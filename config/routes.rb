@@ -19,6 +19,10 @@ Rails.application.routes.draw do
   
   get 'fragments' => 'fragment#index', as: :fragment_list
   get 'fragments/:fragment' => 'fragment#show', as: :fragment_show
+  get 'fragments/:fragment/versions' => 'fragment#versions', as: :fragment_versions
+  get 'fragments/:fragment/versions/revisions' => 'fragment#revisions', as: :fragment_revisions
+  get 'fragments/:fragment/versions/revisions/minor' => 'fragment#minor_revisions', as: :fragment_minor_revisions
+  get 'fragments/:fragment/versions/revisions/major' => 'fragment#major_revisions', as: :fragment_major_revisions
   
   get 'orders' => 'order#index', as: :order_list
   get 'orders/:order' => 'order#show', as: :order_show
