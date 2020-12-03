@@ -1,16 +1,29 @@
 <% content_for :title, @order.display_title %>
+<%= content_tag( 'h2', 'First appearance' ) %>
 <table>
-	<tbody>
-		<tr>
-			<th>First appearance</th>
-			<td><%= link_to( @order.order_versions.first.revision_set.display_date, revision_set_show_url( :revision_set => @order.order_versions.first.revision_set, :anchor => "fragment-#{@order.order_versions.first.citation_in_list}" ) ) %></td>
-		</tr>
-		<tr>
-			<th>Last appearance</th>
-			<td><%= link_to( @order.order_versions.last.revision_set.display_date, revision_set_show_url( :revision_set => @order.order_versions.last.revision_set, :anchor => "fragment-#{@order.order_versions.last.citation_in_list}" ) ) %></td>
-		</tr>
-	</tbody>
+	<%= render :partial => 'order_version/order_version_from_order', :object => @order.order_versions.first %>
 </table>
+
+<%= content_tag( 'h2', 'Last appearance' ) %>
 <table>
-	<%= render :partial => 'order_version/order_version_from_order', :collection => @order.order_versions %>
+	<%= render :partial => 'order_version/order_version_from_order', :object => @order.order_versions.last %>
 </table>
+
+<%= content_tag( 'h2', 'Major revisions' ) %>
+<table>
+	<%= render :partial => 'order_version/order_version_from_order', :collection => @order.order_versions_with_major_revisions %>
+</table>
+
+
+
+
+<%= @order.order_versions.size %>
+<%= @order.order_versions_with_revisions.size %>
+<%= @order.order_versions_with_minor_revisions.size %>
+<%= @order.order_versions_with_major_revisions.size %>
+
+
+
+
+
+
