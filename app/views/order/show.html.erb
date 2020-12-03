@@ -13,17 +13,10 @@
 <table>
 	<%= render :partial => 'order_version/order_version_from_order', :collection => @order.order_versions_with_major_revisions %>
 </table>
-
-
-
-
-<%= @order.order_versions.size %>
-<%= @order.order_versions_with_revisions.size %>
-<%= @order.order_versions_with_minor_revisions.size %>
-<%= @order.order_versions_with_major_revisions.size %>
-
-
-
+<ul>
+	<%= content_tag( 'li', link_to( "Show full version history (#{@order.order_versions.size} versions)", order_versions_url ) ) %>
+	<%= content_tag( 'li', link_to( "Show all revisions (#{@order.order_versions_with_revisions.size} versions)", order_revisions_url ) ) %>
+</ul>
 
 
 
