@@ -1,0 +1,8 @@
+<% content_for :title, "#{@order.display_title} &mdash; Minor revisions".html_safe %>
+<% if @order.order_versions_with_minor_revisions -%>
+	<table>
+		<%= render :partial => 'order_version/order_version_from_order', :collection => @order.order_versions_with_minor_revisions %>
+	</table>
+<% else -%>
+	<%= content_tag( 'p', 'Sorry, there are no minor revisions to show.' ) %>
+<% end -%>
