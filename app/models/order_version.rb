@@ -4,6 +4,7 @@ class OrderVersion < ActiveRecord::Base
   belongs_to :order
   has_many :fragment_versions, -> { order( parlrules_identifier: :asc )}
   
+  # todo: can this be generated from 'current number'
   def citation_in_list
     citation_in_list = self.fragment_versions.first.parlrules_identifier
     # swap . for -
