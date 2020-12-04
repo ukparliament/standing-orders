@@ -4,6 +4,10 @@ class OrderVersion < ActiveRecord::Base
   belongs_to :order
   has_many :fragment_versions, -> { order( parlrules_identifier: :asc )}
   
+  def preceding_order_version
+    OrderVersion.all.select( 'ov.*' ).joins( 'as ov, revision_sets as rs' ).where( 'ov.revision_set_id = rs.id and ov.order_id = ?', self.order_id ).where( 'rs.ordinality < ?', self.revision_set.ordinality ).order( 'rs.ordinality desc' ).first
+  end
+  
   # todo: can this be generated from 'current number'
   def citation_in_list
     citation_in_list = self.fragment_versions.first.parlrules_identifier
