@@ -1,3 +1,5 @@
+drop table if exists edges;
+drop table if exists nodes;
 drop table if exists revisions;
 drop table if exists fragment_versions;
 drop table if exists fragments;
@@ -80,5 +82,22 @@ create table revisions (
 	from_fragment_version_id int not null,
 	to_fragment_version_id int not null,
 	is_major boolean default false,
+	primary key (id)
+);
+
+/* Nodes and edges for Sankey thing */
+create table nodes (
+	id int not null,
+	order_version_id int,
+	label varchar(2000) not null,
+	primary key (id)
+);
+create table edges (
+	id serial,
+	from_order_version_id int not null,
+	from_node int not null,
+	to_order_version_id int,
+	to_node int not null,
+	weight int not null,
 	primary key (id)
 );
