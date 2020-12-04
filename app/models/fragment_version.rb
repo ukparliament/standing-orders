@@ -9,6 +9,7 @@ class FragmentVersion < ActiveRecord::Base
     FragmentVersion.all.select( 'fv.*' ).joins( 'as fv, revision_sets as rs' ).where( 'fv.revision_set_id = rs.id').where( 'fv.fragment_id = ?', self.fragment_id).where( 'rs.ordinality < ?', self.revision_set.ordinality ).order( 'rs.ordinality desc' ).first
   end
   
+  # todo: can this be generated from 'current number'
   def citation_in_list
     citation_in_list = self.parlrules_identifier
     # swap . for -
