@@ -137,3 +137,75 @@ task :inflate_fragment_version_revisions => :environment do
     end
   end
 end
+task :inflate_flows => :environment do
+  puts "Inflating flows: nodes and edges"
+  
+  # Set the start node id to 0
+  @node_id = 0
+  
+  # Make a sink node to soak up orders with no preceding order
+  node = Node.new
+  node.id = @node_id
+  node.label = 'Sink'
+  node.save
+  
+  # Get the last revision set
+  revision_set = RevisionSet.order( 'ordinality' ).last
+  
+  # Loop through order versions in revision set
+  revision_set.order_versions.each do |order_version|
+    populate_edge( order_version )
+  end
+end
+
+def populate_edge( order_version )
+  
+  # Populate a node for this order version
+  node = populate_node( order_version )
+  
+  # There must be a new edge to somewhere. Even if it is to the sink
+  edge = Edge.new
+  edge.from_order_version_id = order_version.id
+  edge.from_node = node.id
+  
+  # If this order versions has a preceding version ....
+  if order_version.preceding_order_version
+    
+    #... populate a node with the preceding order verion
+    node = populate_node( order_version.preceding_order_version )
+    
+    # ...and set the the edge to point at that node
+    edge.to_order_version_id = order_version.preceding_order_version.id
+    edge.to_node = node.id
+    
+    #...go and do all the same for the preceding order version
+    populate_edge( order_version.preceding_order_version )
+  
+  # Otherwise there is no precedning order version ...
+  else
+    
+    # ... so send the output to the sink
+    edge.to_node = 0
+  end
+  edge.weight = 0
+  edge.save
+end
+
+def populate_node( order_version )
+  puts order_version.revision_set.date
+  # Try to find a node with this order version id
+  node = Node.where( :order_version_id => order_version.id ).first
+  
+  # If there is no such node
+  unless node
+    
+    # create one....
+    node = Node.new
+    @node_id = @node_id + 1
+    node.id = @node_id
+    node.order_version_id = order_version.id
+    node.label = order_version.current_number
+    node.save
+  end
+  node
+end
