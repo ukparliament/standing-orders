@@ -43,4 +43,6 @@ Rails.application.routes.draw do
   get 'meta' => 'meta#index', as: :meta_list
   get 'meta/schema' => 'meta#schema', as: :meta_schema
   get 'meta/dump' => 'meta#dump', as: :meta_dump
+  
+  get 'sankey' => 'sankey#show', as: :sankey_show
 end
