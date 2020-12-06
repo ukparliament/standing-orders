@@ -5,7 +5,12 @@
 	<%= render :partial => 'fragment_version/fragment_version_from_fragment', :object => @fragment.fragment_versions.first %>
 </table>
 
-<%= content_tag( 'h2', 'Last appearance' ) %>
+<% if @fragment.remains_in_operation? -%>
+	<%= content_tag( 'h2', 'Still in operation' ) %>
+<% else -%>
+	<%= content_tag( 'h2', 'Last appearance' ) %>
+<% end -%>
+
 <table>
 	<%= render :partial => 'fragment_version/fragment_version_from_fragment', :object => @fragment.fragment_versions.last %>
 </table>
