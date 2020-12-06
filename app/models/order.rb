@@ -24,4 +24,21 @@ class Order < ActiveRecord::Base
     display_title = display_title + ' &mdash; Order ' + self.id.to_s
     display_title.html_safe
   end
+
+  def remains_in_operation?
+    # Default to false
+    remains_in_operation = false
+    
+    # Find the last known revision set
+    last_revision_set = RevisionSet.all.order( 'ordinality' ).last
+    
+    # Find a version of this order in that revision set, if any
+    order_version = OrderVersion.where( 'revision_set_id = ? and order_id = ?', last_revision_set.id, self.id ).first
+    
+    # Set result to true if there is such an order version
+    remains_in_operation = true if order_version
+    
+    # Return true or false
+    remains_in_operation
+  end
 end
