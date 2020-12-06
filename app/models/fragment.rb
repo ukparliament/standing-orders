@@ -21,4 +21,21 @@ class Fragment < ActiveRecord::Base
     display_title = display_title + ' &mdash; Fragment ' + self.id.to_s
     display_title.html_safe
   end
+
+  def remains_in_operation?
+    # Default to false
+    remains_in_operation = false
+    
+    # Find the last known revision set
+    last_revision_set = RevisionSet.all.order( 'ordinality' ).last
+    
+    # Find a version of this fragment in that revision set, if any
+    fragment_version = FragmentVersion.where( 'revision_set_id = ? and fragment_id = ?', last_revision_set.id, self.id ).first
+    
+    # Set result to true if there is such an fragment version
+    remains_in_operation = true if fragment_version
+    
+    # Return true or false
+    remains_in_operation
+  end
 end
