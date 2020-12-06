@@ -4,7 +4,12 @@
 	<%= render :partial => 'order_version/order_version_from_order', :object => @order.order_versions.first %>
 </table>
 
-<%= content_tag( 'h2', 'Last appearance' ) %>
+<% if @order.remains_in_operation? -%>
+	<%= content_tag( 'h2', 'Still in operation' ) %>
+<% else -%>
+	<%= content_tag( 'h2', 'Last appearance' ) %>
+<% end -%>
+
 <table>
 	<%= render :partial => 'order_version/order_version_from_order', :object => @order.order_versions.last %>
 </table>
@@ -17,6 +22,3 @@
 	<%= content_tag( 'li', link_to( "Show full version history (#{@order.order_versions.size} versions)", order_versions_url ) ) %>
 	<%= content_tag( 'li', link_to( "Show all revisions (#{@order.order_versions_with_revisions.size} versions)", order_revisions_url ) ) %>
 </ul>
-
-
-
