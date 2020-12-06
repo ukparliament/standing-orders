@@ -6,7 +6,7 @@
 </table>
 
 <% if @fragment.remains_in_operation? -%>
-	<%= content_tag( 'h2', 'Still in operation' ) %>
+	<%= content_tag( 'h2', 'Current version' ) %>
 <% else -%>
 	<%= content_tag( 'h2', 'Last appearance' ) %>
 <% end -%>
