@@ -1,5 +1,7 @@
 <tr id="order-<%= fragment_version.citation_in_list %>">
-	<%= content_tag( 'td', display_order_link( fragment_version ) ) %>
+	<td>
+		<%= link_to( fragment_version.display_number, order_show_url( :order => fragment_version.order ) ) if fragment_version.display_number %>
+	</td>
 	<%= content_tag( 'td', fragment_version.text ) %>
 	<%= content_tag( 'td', link_to( 'Cite', fragment_show_url( :fragment => fragment_version.fragment ) ) ) %>
 </tr>
