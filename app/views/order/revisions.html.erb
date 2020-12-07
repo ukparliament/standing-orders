@@ -1,8 +1,8 @@
 <% content_for :title, "#{@order.display_title} &mdash; Revisions".html_safe %>
-<% if @order.order_versions_with_revisions -%>
+<% if @order.order_versions_with_revisions.empty? -%>
+	<%= content_tag( 'p', 'Sorry, there are no revisions to show.' ) %>
+<% else -%>
 	<table>
 		<%= render :partial => 'order_version/order_version_from_order', :collection => @order.order_versions_with_revisions %>
 	</table>
-<% else -%>
-	<%= content_tag( 'p', 'Sorry, there are no revisions to show.' ) %>
 <% end -%>
