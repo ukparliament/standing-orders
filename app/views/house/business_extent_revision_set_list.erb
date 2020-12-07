@@ -1,4 +1,4 @@
 <%= content_tag( 'h1', "#{@house.name} &mdash; #{@business_extent.label} &mdash; Revision sets".html_safe ) %>
 <ol>
-	<%= render :partial => 'revision_set/revision_set', :collection => @house.revision_sets_for_business_extent( @business_extent ) %>
+	<%= render :partial => 'revision_set/revision_set_from_house_business_extent', :collection => @house.revision_sets_for_business_extent( @business_extent ) %>
 </ol>
