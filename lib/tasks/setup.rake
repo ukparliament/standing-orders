@@ -30,7 +30,12 @@ task :import_fragment_versions => :environment do
       fragment_version = FragmentVersion.new
       fragment_version.revision_set = revision_set
       fragment_version.parlrules_identifier = row[3].strip
-      fragment_version.current_number = row[4].strip
+      current_number = row[4].strip
+      # swap out the . separator for a -
+      current_number.gsub!( '.', '-' )
+      # remove any 0 in tenths column
+      current_number.gsub!( '-0', '-' )
+      fragment_version.current_number = current_number
       fragment_version.root_number = row[5].strip
       fragment_version.text = row[6].strip
       fragment_version.parlrules_article_identifier = row[7].strip
@@ -66,7 +71,6 @@ task :import_order_versions => :environment do
       order_version = OrderVersion.new
       order_version.revision_set = revision_set
       order_version.parlrules_identifier = row[3].strip
-      order_version.current_number = row[4].strip
       order_version.root_number = row[5].strip
       order_version.save
     else
