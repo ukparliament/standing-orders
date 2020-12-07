@@ -47,7 +47,6 @@ create table order_versions (
 	revision_set_id int not null,
 	order_id int,
 	parlrules_identifier varchar(20) not null,
-	current_number varchar(20) not null,
 	root_number varchar(20) not null,
 	constraint fk_revision_set foreign key (revision_set_id) references revision_sets(id),
 	constraint fk_order foreign key (order_id) references orders(id),
