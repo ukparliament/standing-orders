@@ -31,4 +31,17 @@ class FragmentVersion < ActiveRecord::Base
     display_title = self.revision_set.display_label
     display_title = display_title + ' &mdash; Fragment version '.html_safe + self.id.to_s
   end
+  
+  def display_number
+    display_number = ''
+    # If the last 2 characters of the current number are .1 ...
+    if self.current_number[self.current_number.length - 2, 2] == '-1'
+      
+      # ... this is the first fragment in an order so strip off the '-1'...
+      display_number = self.current_number[0, self.current_number.length - 2]
+      
+      #... add a . for display purposes ...
+      display_number += '.'
+    end
+  end
 end
