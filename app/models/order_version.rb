@@ -26,10 +26,6 @@ class OrderVersion < ActiveRecord::Base
     citation_in_list
   end
   
-  def display_number
-    self.current_number + '.'
-  end
-  
   def display_title
     display_title = self.revision_set.display_label
     display_title = display_title + ' &mdash; Order version '.html_safe + self.id.to_s
