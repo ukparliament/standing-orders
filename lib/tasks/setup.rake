@@ -235,7 +235,7 @@ def populate_node( order_version )
     @node_id = @node_id + 1
     node.id = @node_id
     node.order_version_id = order_version.id
-    node.label = order_version.revision_set.display_date + ' ' + order_version.fragment_versions.first.display_number
+    node.label = 'SO ' + order_version.fragment_versions.first.display_number[0, order_version.fragment_versions.first.display_number.length - 1] + ' (' + order_version.revision_set.date.to_s + ')'
     node.save
   end
   node
