@@ -23,7 +23,7 @@ class FragmentVersion < ActiveRecord::Base
   
   def display_number
     display_number = ''
-    # If the last 2 characters of the current number are .1 ...
+    # If the last 2 characters of the current number are -1 ...
     if self.current_number[self.current_number.length - 2, 2] == '-1'
       
       # ... this is the first fragment in an order so strip off the '-1'...
@@ -32,5 +32,6 @@ class FragmentVersion < ActiveRecord::Base
       #... add a . for display purposes ...
       display_number += '.'
     end
+    display_number
   end
 end
