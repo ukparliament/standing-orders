@@ -8,7 +8,10 @@ task :setup => [
   :inflate_orders,
   :link_fragment_versions_to_orders,
   :link_fragment_versions_to_order_versions,
-  :inflate_fragment_version_revisions
+  :inflate_fragment_version_revisions,
+  :populate_order_version_ordinality,
+  :populate_fragment_version_ordinality,
+  :inflate_flows
 ]
 
 task :import_revision_sets => :environment do
@@ -141,6 +144,33 @@ task :inflate_fragment_version_revisions => :environment do
     end
   end
 end
+task :populate_order_version_ordinality => :environment do
+  puts "Populating ordinality within revision sets for order versions"
+  revision_sets = RevisionSet.all
+  revision_sets.each do |revision_set|
+    ordinality = 0
+    revision_set.order_versions.each do |order_version|
+      ordinality += 1
+      order_version.ordinality = ordinality
+      order_version.save
+    end
+  end
+end
+task :populate_fragment_version_ordinality => :environment do
+  puts "Populating ordinality within revision sets for fragment versions"
+  revision_sets = RevisionSet.all
+  revision_sets.each do |revision_set|
+    ordinality = 0
+    revision_set.fragment_versions.each do |fragment_version|
+      ordinality += 1
+      fragment_version.ordinality = ordinality
+      fragment_version.save
+    end
+  end
+end
+
+
+
 task :inflate_flows => :environment do
   puts "Inflating flows: nodes and edges"
   
@@ -161,7 +191,6 @@ task :inflate_flows => :environment do
     populate_edge( order_version )
   end
 end
-
 def populate_edge( order_version )
   
   # Populate a node for this order version
@@ -194,9 +223,7 @@ def populate_edge( order_version )
   edge.weight = 0
   edge.save
 end
-
 def populate_node( order_version )
-  puts order_version.revision_set.date
   # Try to find a node with this order version id
   node = Node.where( :order_version_id => order_version.id ).first
   
@@ -208,7 +235,7 @@ def populate_node( order_version )
     @node_id = @node_id + 1
     node.id = @node_id
     node.order_version_id = order_version.id
-    node.label = order_version.current_number
+    node.label = order_version.revision_set.display_date + ' ' + order_version.fragment_versions.first.display_number
     node.save
   end
   node
