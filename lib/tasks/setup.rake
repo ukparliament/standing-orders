@@ -220,7 +220,7 @@ def populate_edge( order_version )
     # ... so send the output to the sink
     edge.to_node = 0
   end
-  edge.weight = 0
+  edge.weight = order_version.word_count
   edge.save
 end
 def populate_node( order_version )
