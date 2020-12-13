@@ -6,6 +6,6 @@
 ],
 "links":[
 <% @edges.each do |edge| -%>
-{"source":<%= edge.from_node %>,"target":<%= edge.to_node %>,"value":2}<% unless edge == @edges.last -%>,<% end -%>
+{"source":<%= edge.from_node %>,"target":<%= edge.to_node %>,"value":<%= edge.weight %>}<% unless edge == @edges.last -%>,<% end -%>
 <% end -%>
 ]}
