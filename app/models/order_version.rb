@@ -19,4 +19,12 @@ class OrderVersion < ActiveRecord::Base
     display_title = self.revision_set.display_label
     display_title = display_title + ' &mdash; Order version '.html_safe + self.id.to_s
   end
+  
+  def word_count
+    word_count = 0
+    self.fragment_versions.each do |fragment_version|
+      word_count += fragment_version.word_count
+    end
+    word_count
+  end
 end

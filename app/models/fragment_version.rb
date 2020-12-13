@@ -34,4 +34,8 @@ class FragmentVersion < ActiveRecord::Base
     end
     display_number
   end
+  
+  def word_count
+    self.text.split.size
+  end
 end
