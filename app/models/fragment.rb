@@ -18,7 +18,7 @@ class Fragment < ActiveRecord::Base
   
   def display_title
     display_title = self.fragment_versions.first.order.house.name + ' &mdash; ' + self.fragment_versions.first.order.business_extent.label
-    display_title = display_title + ' &mdash; Fragment ' + self.id.to_s
+    display_title = display_title + ' &mdash; Fragment ID:' + self.id.to_s
     display_title.html_safe
   end
 

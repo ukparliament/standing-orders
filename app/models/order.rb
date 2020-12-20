@@ -21,7 +21,7 @@ class Order < ActiveRecord::Base
   
   def display_title
     display_title = self.house.name + ' &mdash; ' + self.business_extent.label
-    display_title = display_title + ' &mdash; Order ' + self.id.to_s
+    display_title = display_title + ' &mdash; Order ID:' + self.id.to_s
     display_title.html_safe
   end
 
