@@ -1,18 +1,18 @@
 <% content_for :title, @fragment.display_title %>
 
-<%= content_tag( 'h2', 'First appearance' ) %>
-<table>
-	<%= render :partial => 'fragment_version/fragment_version_from_fragment', :object => @fragment.fragment_versions.first %>
-</table>
-
 <% if @fragment.remains_in_operation? -%>
-	<%= content_tag( 'h2', 'Current version' ) %>
+	<%= content_tag( 'h2', 'Current version', :id => 'current' ) %>
 <% else -%>
-	<%= content_tag( 'h2', 'Last appearance' ) %>
+	<%= content_tag( 'h2', 'Last appearance', :id => 'last' ) %>
 <% end -%>
 
 <table>
 	<%= render :partial => 'fragment_version/fragment_version_from_fragment', :object => @fragment.fragment_versions.last %>
+</table>
+
+<%= content_tag( 'h2', 'First appearance', :id => 'first' ) %>
+<table>
+	<%= render :partial => 'fragment_version/fragment_version_from_fragment', :object => @fragment.fragment_versions.first %>
 </table>
 
 <%= content_tag( 'h2', 'Major revisions' ) %>
