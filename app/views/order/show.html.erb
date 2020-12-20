@@ -9,13 +9,10 @@
 	<%= render :partial => 'order_version/order_version_from_order', :object => @order.order_versions.last %>
 </table>
 
-
 <%= content_tag( 'h2', 'First appearance', :id => 'first' ) %>
 <table>
 	<%= render :partial => 'order_version/order_version_from_order', :object => @order.order_versions.first %>
 </table>
-
-
 
 <%= content_tag( 'h2', 'Major revisions' ) %>
 <table>
