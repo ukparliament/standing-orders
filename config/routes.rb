@@ -26,6 +26,7 @@ Rails.application.routes.draw do
   
   get 'orders' => 'order#index', as: :order_list
   get 'orders/:order' => 'order#show', as: :order_show
+  get 'orders/:order/redirect' => 'order#redirect', as: :order_redirect
   get 'orders/:order/versions' => 'order#versions', as: :order_versions
   get 'orders/:order/versions/revisions' => 'order#revisions', as: :order_revisions
   get 'orders/:order/versions/revisions/minor' => 'order#minor_revisions', as: :order_minor_revisions
