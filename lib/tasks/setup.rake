@@ -168,7 +168,12 @@ task :populate_fragment_version_ordinality => :environment do
     end
   end
 end
-
+task :import_platform_keys => :environment do
+  puts "importing platform keys"
+  CSV.foreach( 'db/data/2.0.0/platform_keys.csv' ) do |row|
+    puts row[0]
+  end
+end
 
 
 task :inflate_flows => :environment do
