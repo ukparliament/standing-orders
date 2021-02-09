@@ -18,8 +18,8 @@ has_many :order_versions, -> { order( ordinality: :asc )}
 to:
 
 ```
-has_many :fragment_versions, -> { order( parlrules_identifier_: :asc )}
-has_many :order_versions, -> { order( parlrules_identifier_: :asc )}
+has_many :fragment_versions, -> { order( parlrules_identifier: :asc )}
+has_many :order_versions, -> { order( parlrules_identifier: :asc )}
 
 # Run:
 
@@ -28,8 +28,8 @@ has_many :order_versions, -> { order( parlrules_identifier_: :asc )}
 ### Edit the revision set model to change:
 
 ```
-has_many :fragment_versions, -> { order( parlrules_identifier_: :asc )}
-has_many :order_versions, -> { order( parlrules_identifier_: :asc )}
+has_many :fragment_versions, -> { order( parlrules_identifier: :asc )}
+has_many :order_versions, -> { order( parlrules_identifier: :asc )}
 ```
 
 to:
