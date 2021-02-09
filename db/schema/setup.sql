@@ -1,5 +1,6 @@
 drop table if exists edges;
 drop table if exists nodes;
+drop table if exists platform_keys;
 drop table if exists revisions;
 drop table if exists fragment_versions;
 drop table if exists fragments;
@@ -27,6 +28,7 @@ create table revision_sets (
 	date date not null,
 	ordinality serial not null,
 	parlrules_identifier varchar(20) not null,
+	url_key char(8) default null,
 	business_extent_id int not null,
 	house_id int not null,
 	constraint fk_business_extent foreign key (business_extent_id) references business_extents(id),
@@ -37,6 +39,7 @@ create table orders (
 	id serial not null,
 	parlrules_identifier varchar(20) not null,
 	business_extent_id int not null,
+	url_key char(8) default null,
 	house_id int not null,
 	constraint fk_business_extent foreign key (business_extent_id) references business_extents(id),
 	constraint fk_house foreign key (house_id) references houses(id),
@@ -56,6 +59,7 @@ create table order_versions (
 create table fragments (
 	id serial not null,
 	parlrules_identifier varchar(20) not null,
+	url_key char(8) default null,
 	primary key (id)
 );
 create table fragment_versions (
@@ -83,6 +87,14 @@ create table revisions (
 	from_fragment_version_id int not null,
 	to_fragment_version_id int not null,
 	is_major boolean default false,
+	primary key (id)
+);
+
+/* Platform keys for revison sets, orders and fragments */
+create table platform_keys (
+	id serial not null,
+	key char(8) not null,
+	is_used boolean default false,
 	primary key (id)
 );
 
