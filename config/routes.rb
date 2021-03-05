@@ -43,6 +43,7 @@ Rails.application.routes.draw do
   get 'revisions/:revision' => 'revision#show', as: :revision_show
   
   get 'meta' => 'meta#index', as: :meta_list
+  get 'meta/about' => 'meta#about', as: :meta_about
   get 'meta/schema' => 'meta#schema', as: :meta_schema
   get 'meta/dump' => 'meta#dump', as: :meta_dump
   
