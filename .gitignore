@@ -27,4 +27,5 @@
 *.elc
 auto-save-list
 tramp
-.\#*
+.\#*config/secrets.yml
+config/environment.rb
