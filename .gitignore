@@ -29,3 +29,4 @@ auto-save-list
 tramp
 .\#*config/secrets.yml
 config/environment.rb
+config/secrets.yml
