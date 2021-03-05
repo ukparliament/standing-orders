@@ -15,19 +15,30 @@
 	
 <header>
 
-			<nav><a href="/">Standing Orders</a></nav>
+			<nav><%= link_to( 'Standing Orders', home_url ) %></nav>
 			
 			<h1><%= yield(:title) %></h1>
 
 		</header>
 		
-		<main>
-			
-			
-			<%= content_tag( 'p', "This website has #{link_to( 'moved home', 'https://api.parliament.uk/standing-orders' )}.".html_safe )%>
-		</main>
+		<main><%= yield %></main>
 		
-		<footer></footer>
+		<footer>
+		
+		<cite>
+		
+		<p>UK House of Commons Standing Orders Dataset, Version 2.0.0, <%= link_to( 'ParlRulesData Project', 'https://parlrulesdata.org/' ) %>. 2020.</p>
+
+		<p>Goet, Niels D., Thomas G. Fleming, and Radoslaw Zubek. Forthcoming. ‘Procedural Change in the UK House of Commons, 1811-2015’. Legislative Studies Quarterly.</p>
+		
+		<p>Distributed under a <%= link_to( 'Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License (CC BY-NC-SA 4.0)', 'https://creativecommons.org/licenses/by-nc-sa/4.0/' ) %>.</p>
+			
+		<p><%= link_to( 'About this application', meta_list_url ) %></p>
+		
+		
+		</cite>
+
+		</footer>
 
 	</body>
 </html>
