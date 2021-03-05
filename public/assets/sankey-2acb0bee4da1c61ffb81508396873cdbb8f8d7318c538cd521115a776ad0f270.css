@@ -1,0 +1,24 @@
+/* line 4, /Users/michaelsmethurst/Documents/Work/Code/Rails/standing-orders/app/assets/stylesheets/sankey.scss */
+.node rect {
+  cursor: move;
+  fill-opacity: .9;
+  shape-rendering: crispEdges;
+}
+
+/* line 9, /Users/michaelsmethurst/Documents/Work/Code/Rails/standing-orders/app/assets/stylesheets/sankey.scss */
+.node text {
+  pointer-events: none;
+  text-shadow: 0 1px 0 #fff;
+}
+
+/* line 13, /Users/michaelsmethurst/Documents/Work/Code/Rails/standing-orders/app/assets/stylesheets/sankey.scss */
+.link {
+  fill: none;
+  stroke: #000;
+  stroke-opacity: .2;
+}
+
+/* line 18, /Users/michaelsmethurst/Documents/Work/Code/Rails/standing-orders/app/assets/stylesheets/sankey.scss */
+.link:hover {
+  stroke-opacity: .5;
+}
