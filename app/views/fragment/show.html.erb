@@ -1,5 +1,9 @@
 <% content_for :title, @fragment.display_title %>
 
+<%= content_tag( 'h2', 'Cite as' ) %>
+<%= text_field_tag( 'permalink', fragment_redirect_url ) %>
+<%= button_tag( 'Copy to clipboard',  :onclick => 'copyPermalink()' ) %>
+
 <% if @fragment.remains_in_operation? -%>
 	<%= content_tag( 'h2', 'Current version', :id => 'current' ) %>
 <% else -%>
