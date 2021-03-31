@@ -1,12 +1,15 @@
 source 'https://rubygems.org'
 
-gem 'diffy'
+ruby '2.6.2'
+
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.11.1'
 
-# Use pg as the database for Active Record
-gem 'pg', '~> 0.18.4'
+# Use sqlite3 as the database for Active Record
+gem 'pg', '~> 0.19'
+
+gem 'diffy'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
