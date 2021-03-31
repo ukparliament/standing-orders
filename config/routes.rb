@@ -19,7 +19,7 @@ Rails.application.routes.draw do
   
   get 'fragments' => 'fragment#index', as: :fragment_list
   get 'fragments/:fragment' => 'fragment#show', as: :fragment_show
-  get 'fragments/:fragment/redirect' => 'fragment#redirect', as: :fragment_redirect
+  get 'fragments/:fragment/permalink' => 'fragment#redirect', as: :fragment_redirect
   get 'fragments/:fragment/versions' => 'fragment#versions', as: :fragment_versions
   get 'fragments/:fragment/versions/revisions' => 'fragment#revisions', as: :fragment_revisions
   get 'fragments/:fragment/versions/revisions/minor' => 'fragment#minor_revisions', as: :fragment_minor_revisions
@@ -27,7 +27,7 @@ Rails.application.routes.draw do
   
   get 'orders' => 'order#index', as: :order_list
   get 'orders/:order' => 'order#show', as: :order_show
-  get 'orders/:order/redirect' => 'order#redirect', as: :order_redirect
+  get 'orders/:order/permalink' => 'order#redirect', as: :order_redirect
   get 'orders/:order/versions' => 'order#versions', as: :order_versions
   get 'orders/:order/versions/revisions' => 'order#revisions', as: :order_revisions
   get 'orders/:order/versions/revisions/minor' => 'order#minor_revisions', as: :order_minor_revisions
