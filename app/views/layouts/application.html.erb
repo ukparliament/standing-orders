@@ -29,35 +29,27 @@
     <link rel='dns-prefetch' href='//standing-orders.herokuapp.com'>
 	</head>
 	<body id="<%= Rails.env %>-environment">
-	
-<header>
-
-			<nav><%= link_to( 'Standing Orders', home_url ) %></nav>
-			
+		<header>
+			<nav>
+				<%= content_tag( 'p', link_to( 'Standing Orders', home_url ) ) %>
+				<p>
+					<%= link_to( 'Houses', house_list_url ) %>
+					&middot;
+					<%= link_to( 'Business extents', business_extent_list_url ) %>
+				</p>
+			</nav>
 			<h1><%= yield(:title) %></h1>
-
 		</header>
-		
 		<main><%= yield %></main>
-		
 		<footer>
-		
-		<cite>
-		
-		<p>UK House of Commons Standing Orders Dataset, Version 2.0.0, <%= link_to( 'ParlRulesData Project', 'https://parlrulesdata.org/' ) %>. 2020.</p>
-
-		<p>Goet, Niels D., Thomas G. Fleming, and Radoslaw Zubek. Forthcoming. ‘Procedural Change in the UK House of Commons, 1811-2015’. Legislative Studies Quarterly.</p>
-		
-		<p>Distributed under a <%= link_to( 'Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License (CC BY-NC-SA 4.0)', 'https://creativecommons.org/licenses/by-nc-sa/4.0/' ) %>.</p>
-		
-		
-		</cite>
-	
-		<%= link_to( 'Meta', meta_list_url ) %>
-		&middot;
-		<%= link_to( 'Schema', meta_schema_url )  %>
-
+			<cite>
+				<p>UK House of Commons Standing Orders Dataset, Version 2.0.0, <%= link_to( 'ParlRulesData Project', 'https://parlrulesdata.org/' ) %>. 2020.</p>
+				<p>Goet, Niels D., Thomas G. Fleming, and Radoslaw Zubek. Forthcoming. ‘Procedural Change in the UK House of Commons, 1811-2015’. Legislative Studies Quarterly.</p>
+				<p>Distributed under a <%= link_to( 'Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License (CC BY-NC-SA 4.0)', 'https://creativecommons.org/licenses/by-nc-sa/4.0/' ) %>.</p>
+			</cite>
+			<%= link_to( 'Meta', meta_list_url ) %>
+			&middot;
+			<%= link_to( 'Schema', meta_schema_url )  %>
 		</footer>
-
 	</body>
 </html>
