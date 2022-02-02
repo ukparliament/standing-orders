@@ -3,10 +3,10 @@
 
 <p>Standing Orders citable over time, based on data from <a href="https://parlrulesdata.org/">the ParlRules project</a>.</p>
 
-<ol id="revision_sets" class="list pl0">
+<ol id="houses" class="list pl0">
 	<%= render(
-		:partial => 'revision_set/revision_set', 
-		:collection => @revision_sets, 
+		:partial => 'house/house', 
+		:collection => @houses, 
 		cached: true
 		) %>
 </ol>

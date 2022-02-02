@@ -1,6 +1,6 @@
 class HomeController < ApplicationController
   
   def index
-    @revision_sets = RevisionSet.all.order( 'ordinality asc' )
+    @houses = House.all
   end
 end
